@@ -21,7 +21,7 @@ class Aplicacion :
         self.ventana.geometry("720x480")
         self.ventana.grid_rowconfigure(0, weight = 1)
         self.ventana.grid_columnconfigure(1 , weight = 1)
-        self.ventana.iconbitmap("img\ondas-sonoras.ico")
+        self.ventana.iconbitmap("icon\ondas-sonoras.ico")
         self.ventana.config(bg = "#460808")
     
         #Obtencion de las dimenciones de la pantalla.
