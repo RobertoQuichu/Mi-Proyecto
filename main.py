@@ -50,9 +50,18 @@ class Inicio_de_app (customtkinter.CTk) :
         #Procesamiento de datos.
         nombre = self.entrada_nombre.get()
         if nombre :
+            self.withdraw() #Oculta la ventana actual.
             self.app = Aplicacion(nombre)
+            self.app.protocol("WW_DELETE_WINDOW", self.mostrar_ventana_inicial)
         else :
             CTkMessagebox(title = "Campo Vacio", message = "Por favor ingrese su nombre.")
+
+    def mostrar_ventana_inicial (self):
+
+        """ Este metodo muestra la ventana de inicio cuando la ventana de la aplicación se cierra"""
+
+        #Procesamiento de datos.
+        self.deiconify()
 
 class Aplicacion (customtkinter.CTkToplevel):
 
