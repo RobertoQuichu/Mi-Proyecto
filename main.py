@@ -1,10 +1,8 @@
 #Importacion de funciones.
-import customtkinter
+import customtkinter, os, json
 from tkinter import *
 from PIL import Image
 from CTkMessagebox import CTkMessagebox
-import os  
-import json
 
 #Definicion de la clase principal.
 customtkinter.set_appearance_mode("System")
@@ -43,6 +41,18 @@ class Inicio_de_app (customtkinter.CTk) :
         self.boton_cierre = customtkinter.CTkButton(self, text = "Cerrar Aplicacion", command = self.destroy)
         self.boton_cierre.pack(pady = 5)
 
+        #Carga del archivo en caso de existir.
+        try :
+            with open ("nombre_usuario.json", "r") as file :
+                data = json.load(file)
+                nombre_guardado = data.get("nombre", "")
+                self.entrada_nombre.insert(0, nombre_guardado)
+        except FileExistsError :
+            
+            #Si el archivo no existe se crea un archivo vacío.
+            with open("nombre_usuario.json", "w") as file:
+                pass
+
     def iniciar_app (self) :
 
         """ Este metodo da inicio a las comandos principales de la aplicacion."""
@@ -50,6 +60,9 @@ class Inicio_de_app (customtkinter.CTk) :
         #Procesamiento de datos.
         nombre = self.entrada_nombre.get()
         if nombre :
+            data = {"Nombre: " : nombre}
+            with open ("nombre_usuario.json", "w") as file :
+                json.dump(data, file)
             self.withdraw() #Oculta la ventana actual.
             self.app = Aplicacion(nombre)
             self.app.protocol("WW_DELETE_WINDOW", self.mostrar_ventana_inicial)
@@ -98,6 +111,7 @@ class Aplicacion (customtkinter.CTkToplevel):
         buton = customtkinter.CTkButton(self, text = "Inicial busqueda")
         buton.place(relx=0.1, rely=0.3, anchor="w")
 
+#Inicializador de la aplicacion.
 if __name__ == '__main__' :
 
     app = Inicio_de_app()
