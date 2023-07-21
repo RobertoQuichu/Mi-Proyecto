@@ -26,7 +26,7 @@ class Inicio_de_app (customtkinter.CTk) :
         super().__init__()
         self.title("App Music Tour")
         self.geometry("360x200")
-        self.iconbitmap("icon\ondas-sonoras.ico")
+        self.iconbitmap("assets\ondas-sonoras.ico")
 
         #Centrar ventana.
         window_width = self.winfo_reqwidth()
@@ -84,7 +84,7 @@ class Aplicacion (customtkinter.CTkToplevel):
         self.geometry("480x360")
         self.grid_rowconfigure(0, weight = 1)
         self.grid_columnconfigure(1 , weight = 1)
-        self.iconbitmap("icon\ondas-sonoras.ico")
+        self.iconbitmap("assets\ondas-sonoras.ico")
         self.config(bg = "#460808")
 
         #Centrar ventana.
@@ -99,7 +99,7 @@ class Aplicacion (customtkinter.CTkToplevel):
         alto_pantalla = self.winfo_screenheight()
 
         #Carga de imagenes.
-        discoteca = customtkinter.CTkImage(light_image = Image.open("imagen\discoteca.jpg"), size = (ancho_pantalla, alto_pantalla))
+        discoteca = customtkinter.CTkImage(light_image = Image.open("assets\discoteca.jpg"), size = (ancho_pantalla, alto_pantalla))
         etiqueta_imagen = customtkinter.CTkLabel(master = self, image= discoteca, text = "")
         etiqueta_imagen.pack()
 

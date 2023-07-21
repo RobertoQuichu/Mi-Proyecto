@@ -9,6 +9,7 @@ class Indice_de_eventos (customtkinter.CTkToplevel) :
     """ """
 
     #Declaracion de Metodos.
+
     @classmethod
     def cargar_datos (cls) :
 
