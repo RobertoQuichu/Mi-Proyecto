@@ -3,6 +3,7 @@ import customtkinter, os, json
 from tkinter import *
 from PIL import Image
 from CTkMessagebox import CTkMessagebox
+from indice_de_eventos import Indice_de_eventos
 
 #Definicion de la clase principal.
 customtkinter.set_appearance_mode("System")
@@ -26,6 +27,13 @@ class Inicio_de_app (customtkinter.CTk) :
         self.title("App Music Tour")
         self.geometry("360x200")
         self.iconbitmap("icon\ondas-sonoras.ico")
+
+        #Centrar ventana.
+        window_width = self.winfo_reqwidth()
+        window_height = self.winfo_reqheight()
+        position_right = int(self.winfo_screenwidth() / 2 - window_width / 2)
+        position_down = int(self.winfo_screenheight() / 2 - window_height / 2)
+        self.geometry(f'+{position_right}+{position_down}')
 
         #Creacion de etiqueta.
         self.etiqueta_nombre = customtkinter.CTkLabel(self, text = "Ingrese su nombre: ", font = customtkinter.CTkFont(family = "Arial", size = 12))
@@ -56,7 +64,7 @@ class Inicio_de_app (customtkinter.CTk) :
 
     def mostrar_ventana_inicial (self):
 
-        """ Este metodo muestra la ventana de inicio cuando la ventana de la aplicación se cierra"""
+        """ Este metodo muestra la ventana principal, cuando la ventana para ingresar el usario se cierra."""
 
         #Procesamiento de datos.
         self.deiconify()
@@ -78,7 +86,14 @@ class Aplicacion (customtkinter.CTkToplevel):
         self.grid_columnconfigure(1 , weight = 1)
         self.iconbitmap("icon\ondas-sonoras.ico")
         self.config(bg = "#460808")
-    
+
+        #Centrar ventana.
+        window_width = self.winfo_reqwidth()
+        window_height = self.winfo_reqheight()
+        position_right = int(self.winfo_screenwidth() / 2 - window_width / 2)
+        position_down = int(self.winfo_screenheight() / 2 - window_height / 2)
+        self.geometry(f'+{position_right}+{position_down}')
+
         #Obtencion de las dimenciones de la pantalla.
         ancho_pantalla = self.winfo_screenwidth()
         alto_pantalla = self.winfo_screenheight()
@@ -90,11 +105,18 @@ class Aplicacion (customtkinter.CTkToplevel):
 
         #Texto de bienvenida.
         welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {nombre}", font = customtkinter.CTkFont(family="Arial", size=22, weight="bold"))
-        welcome.place(relx = 0.2, rely = 0.1, anchor = CENTER)
+        welcome.place(relx = 0.5, rely = 0.1, anchor = CENTER)
 
         #Creacion del Boton.
-        buton = customtkinter.CTkButton(self, text = "Inicial busqueda")
+        events = Indice_de_eventos(self)
+        buton = customtkinter.CTkButton(self, text = "Inicial busqueda", command = events.eventos)
         buton.place(relx=0.1, rely=0.3, anchor="w")
+
+    def buscador (self) :
+
+        """ Esta funcion recibe la clase Indice_de_Eventos para inicializar su metodo de busqueda incorporado."""
+
+        #Procesamiento de datos.
 
 #Inicializador de la aplicacion.
 if __name__ == '__main__' :
