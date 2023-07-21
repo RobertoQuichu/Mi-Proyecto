@@ -4,7 +4,7 @@ import customtkinter
 import json
 import os
 
-class Indice_de_eventos (customtkinter.CTkToplevel) :
+class Indice_de_Eventos (customtkinter.CTkToplevel) :
 
     """ """
 
@@ -26,6 +26,7 @@ class Indice_de_eventos (customtkinter.CTkToplevel) :
             eventos = []
         print(eventos)
         return eventos
+    
     def __init__(self, ventana = None) :
 
         """ Metodo Constructor de la clase."""
@@ -47,6 +48,7 @@ class Indice_de_eventos (customtkinter.CTkToplevel) :
         buton.place(relx=0.1, rely=0.3, anchor="w")
 
     def ver_detalles_evento(self):
+
         # Obtener el índice del evento seleccionado
         index = self.lista_eventos.curselection()
         if index:
