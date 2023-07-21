@@ -7,7 +7,6 @@ from views.ventana_de_incio import Aplicacion
 from views.ventana_principal import Inicio_de_app
 from views.indice_de_eventos import Indice_de_Eventos
 
-
 #Definicion de la clase principal.
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
