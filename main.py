@@ -106,17 +106,15 @@ class Aplicacion (customtkinter.CTkToplevel):
         #Texto de bienvenida.
         welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {nombre}", font = customtkinter.CTkFont(family="Arial", size=22, weight="bold"))
         welcome.place(relx = 0.5, rely = 0.1, anchor = CENTER)
-
-        #Creacion del Boton.
-        events = Indice_de_eventos(self)
-        buton = customtkinter.CTkButton(self, text = "Indice de eventos", command = events)
+        buton = customtkinter.CTkButton(self, text="Indice de eventos", command=self.eventos_detalles)
         buton.place(relx=0.1, rely=0.3, anchor="w")
 
-    def buscador (self) :
+    def eventos_detalles (self) :
 
-        """ Esta funcion recibe la clase Indice_de_Eventos para inicializar su metodo de busqueda incorporado."""
+        """ Metodo por el cual se invoca a la clase Indice_de_eventos."""
 
         #Procesamiento de datos.
+        indice_eventos = Indice_de_eventos(self)
 
 #Inicializador de la aplicacion.
 if __name__ == '__main__' :
