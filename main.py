@@ -109,7 +109,7 @@ class Aplicacion (customtkinter.CTkToplevel):
 
         #Creacion del Boton.
         events = Indice_de_eventos(self)
-        buton = customtkinter.CTkButton(self, text = "Inicial busqueda", command = events.eventos)
+        buton = customtkinter.CTkButton(self, text = "Indice de eventos", command = events)
         buton.place(relx=0.1, rely=0.3, anchor="w")
 
     def buscador (self) :
