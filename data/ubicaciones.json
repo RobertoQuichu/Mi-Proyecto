@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 1,
+        "latitud": 10.412526380384493,
+        "longitud": -66.88841760929853,
+        "direccion": "C. Interna Canchas, Caracas 1080"
+    },
+    {
+        "id" : 2,
+        "latitud": -34.63512619794627,
+        "longitud": -58.52096826295566,
+        "direccion": "Av. Juan Bautista Justo 9200"
+    }
+]

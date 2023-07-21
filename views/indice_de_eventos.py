@@ -36,19 +36,14 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.ventana = ventana
         self.title("Indice de Eventos")
         self.eventos = self.cargar_datos()
+        self.geometry("360x240")
 
         #Crear una lista para mostrar los eventos
         self.lista_eventos = Listbox(self.ventana, width=50)
         self.lista_eventos.pack(padx=20, pady=10)
         for evento in self.eventos :
             self.lista_eventos.insert(END, evento["Nombre"])
-        
-        #Creacion del Boton.
-        buton = customtkinter.CTkButton(self, text = "Indice de eventos", command = self.ver_detalles_evento)
-        buton.place(relx=0.1, rely=0.3, anchor="w")
-
-    def ver_detalles_evento(self):
-
+            
         # Obtener el índice del evento seleccionado
         index = self.lista_eventos.curselection()
         if index:

@@ -3,6 +3,8 @@ from tkinter import *
 from CTkMessagebox import CTkMessagebox
 from PIL import Image
 from views.indice_de_eventos import Indice_de_Eventos
+from views.eventos import Eventos
+from views.ubicaciones import Ubicacion
 import customtkinter, os, json
 
 class Aplicacion (customtkinter.CTkToplevel):
@@ -10,7 +12,7 @@ class Aplicacion (customtkinter.CTkToplevel):
     """ Modelo de clase de la consola. """
 
     #Declaracion de metodos.
-    def __init__ (self, nombre) :
+    def __init__ (self, nombre, apellido) :
 
         """ Metodo Constructor."""
         super().__init__()
@@ -40,7 +42,7 @@ class Aplicacion (customtkinter.CTkToplevel):
         etiqueta_imagen.pack()
 
         #Texto de bienvenida.
-        welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {nombre}", font = customtkinter.CTkFont(family="Arial", size=22, weight="bold"))
+        welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {nombre} {apellido}", font = customtkinter.CTkFont(family="Arial", size=22, weight="bold"))
         welcome.place(relx = 0.5, rely = 0.1, anchor = CENTER)
         buton = customtkinter.CTkButton(self, text="Indice de eventos", command=self.eventos_detalles)
         buton.place(relx=0.1, rely=0.3, anchor="w")
