@@ -4,7 +4,7 @@
      "Genero" : "Rock", 
      "Ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
      "id_ubicacion" : 1,
-     "hora_inico" : "2010-05-15T21:00",
+     "hora_inicio" : "2010-05-15T21:00",
      "hora_fin" : "2010-05-15T23:00",
      "descripcion" : "Ultimo concierto de Gustavo Cerati promocionando su album 'Fueza Natural.'",
      "Imagen" : "imagen1.png"
