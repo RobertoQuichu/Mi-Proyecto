@@ -3,6 +3,7 @@ from tkinter import *
 from PIL import Image
 from views.indice_de_eventos import Indice_de_Eventos
 import customtkinter
+from tkintermapview import TkinterMapView
 
 class Aplicacion (customtkinter.CTk) :
 
@@ -41,10 +42,26 @@ class Aplicacion (customtkinter.CTk) :
         welcome.place(relx = 0.5, rely = 0.1, anchor = CENTER)
 
         #Boton de indice de eventos.
-        buton = customtkinter.CTkButton(self, text="Indice de eventos", command = self.mostrar_indice_de_eventos)
+        comando = mostrar_indice_de_eventos(self)
+        buton = customtkinter.CTkButton(self, text="Indice de eventos", command = comando)
         buton.place(relx=0.1, rely=0.3, anchor="w")
 
-    def mostrar_indice_de_eventos(self) :
+def mostrar_indice_de_eventos(self):
 
-        indice_eventos = Indice_de_Eventos()
+    indice_eventos = Indice_de_Eventos(self)
 
+    self.frame_mapa = customtkinter.CTkFrame(self, width=600, height=600)
+    self.frame_mapa.pack(side='right')
+
+    self.frame_locales = customtkinter.CTkFrame(self, width=300, height=600)
+    self.frame_locales.pack(side='left', fill='both', expand=True)
+    # Placeholder para el mapa
+    self.mapa = TkinterMapView(self.frame_mapa, width=600, height=600, corner_radius=0)
+    self.mapa.set_position(-24.77616437851034, -65.41079411004006)
+    self.mapa.set_zoom(16)
+    self.mapa.pack(side='right')
+    
+    # Listbox para los locales
+    self.lista_locales = Listbox(self.frame_locales)
+    self.lista_locales.bind('<ButtonRelease-1>', self.seleccionar_local_callback)
+    self.lista_locales.pack(fill='both', expand=True)
