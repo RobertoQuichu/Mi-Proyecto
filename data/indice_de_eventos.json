@@ -1,22 +1,22 @@
 [
-    {"Nombre" : "Concierto de Rock", 
-     "Artista" : "Gustavo Cerati", 
-     "Genero" : "Rock", 
-     "Ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
+    {"nombre" : "Concierto de Rock", 
+     "artista" : "Gustavo Cerati", 
+     "genero" : "Rock", 
+     "ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
      "id_ubicacion" : 1,
      "hora_inicio" : "2010-05-15T21:00",
      "hora_fin" : "2010-05-15T23:00",
      "descripcion" : "Ultimo concierto de Gustavo Cerati promocionando su album 'Fueza Natural.'",
-     "Imagen" : "imagen1.png"
+     "imagen" : "imagen1.png"
     },
-    {"Nombre" : "Concierto 2", 
-     "Artista" : "Abel Pintos", 
-     "Genero" : "Pop latino Balada romántica", 
-     "Ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
+    {"nombre" : "Concierto 2", 
+     "artista" : "Abel Pintos", 
+     "genero" : "Pop latino Balada romántica", 
+     "ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
      "id_ubicacion" : 2,
-     "hora_inico" : "2023-11-18T21:00",
+     "hora_inicio" : "2023-11-18T21:00",
      "hora_fin" : "2023-11-18T23:00",
      "descripcion" : "Proximo concierot de Abel Pintos.",
-     "Imagen" : "imagen2.png"
+     "imagen" : "imagen2.png"
     }
 ]

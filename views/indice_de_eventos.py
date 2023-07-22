@@ -20,6 +20,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.iconbitmap("assets\ondas-sonoras.ico")
         self.eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.ubicaciones = Ubicacion.cargar_ubicaciones("data/ubicaciones.json")
+        
 
 
 
