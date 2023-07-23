@@ -1,9 +1,1 @@
-[
-    {
-        "id" : "",
-        "nombre" : "",
-        "apellido" : "",
-        "asitencias" : []
-    }
-     
-]
+[{"id": "", "nombre": "", "apellido": "", "asistencia": []}, {"id": "", "nombre": "roberto", "apellido": "quichu", "asistencia": []}, {"id": "", "nombre": "juan", "apellido": "perez", "asistencia": []}]

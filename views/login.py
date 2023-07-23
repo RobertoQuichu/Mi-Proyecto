@@ -58,7 +58,7 @@ class Inicio_de_app(customtkinter.CTk)  :
             self.withdraw()  # Oculta la ventana actual.
 
             # Creamos una instancia de Usuario con los datos ingresados
-            nuevo_usuario = Usuario(id="", nombre=nombre, apellido=apellido, historial=[])
+            nuevo_usuario = Usuario(id="", nombre=nombre, apellido=apellido, asistencias=[])
 
             # Guardamos el nuevo usuario en el archivo JSON
             nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
