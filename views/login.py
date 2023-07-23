@@ -2,9 +2,11 @@
 from tkinter import * 
 from CTkMessagebox import CTkMessagebox
 from views.ventana_principal import Aplicacion
-import customtkinter
+from models.usuarios import Usuario
+import customtkinter, json
 
 class Inicio_de_app (customtkinter.CTk) :
+
     """ 
     Esta clase inicia la ventana principal en la cual el usuario ingresara su nombre
     con el cual el programa se referira a el
@@ -19,6 +21,7 @@ class Inicio_de_app (customtkinter.CTk) :
         self.title("App Music Tour")
         self.geometry("360x330")
         self.iconbitmap("assets\ondas-sonoras.ico")
+        self.lista_usuarios = []
 
         #Centrar ventana.
         window_width = self.winfo_reqwidth()
@@ -29,7 +32,7 @@ class Inicio_de_app (customtkinter.CTk) :
         
         #Creacion de etiqueta.
         self.etiqueta_nombre = customtkinter.CTkLabel(self, text = "Ingrese su nombre: ", font = customtkinter.CTkFont(family = "Arial", size = 12))
-        self.etiqueta_nombre.pack(pady = 10)
+        self.etiqueta_nombre.pack(padx = 1, pady = 10)
         self.entrada_nombre = customtkinter.CTkEntry(self)
         self.entrada_nombre.pack(pady = 10) 
         self.etiqueta_apellido = customtkinter.CTkLabel(self, text = "Ingrese su apellido: ", font = customtkinter.CTkFont(family = "Arial", size = 12))
@@ -50,7 +53,9 @@ class Inicio_de_app (customtkinter.CTk) :
         #Procesamiento de datos.
         nombre = self.entrada_nombre.get()
         apellido = self.entrada_apellido.get()
-        if nombre and apellido :
+        
+        #Cargamos los archivos existente.
+        if nombre and apellido:
 
             self.withdraw() #Oculta la ventana actual.
             self.app = Aplicacion(nombre, apellido)

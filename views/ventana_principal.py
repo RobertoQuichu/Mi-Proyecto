@@ -2,6 +2,8 @@
 from tkinter import * 
 from PIL import Image
 from views.indice_de_eventos import Indice_de_Eventos
+from views.busqueda_y_filtraciones import Busqueda_Filtraciones
+from models.usuarios import Usuario
 import customtkinter
 
 class Aplicacion (customtkinter.CTkToplevel):
@@ -21,7 +23,9 @@ class Aplicacion (customtkinter.CTkToplevel):
         self.grid_columnconfigure(1 , weight = 1)
         self.iconbitmap("assets\ondas-sonoras.ico")
         self.config(bg = "#460808")
-        
+        self.nombre = nombre
+        self.apellido = apellido
+
         #Centrar ventana.
         window_width = self.winfo_reqwidth()
         window_height = self.winfo_reqheight()
@@ -41,8 +45,14 @@ class Aplicacion (customtkinter.CTkToplevel):
         #Texto de bienvenida.
         welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {nombre} {apellido}", font = customtkinter.CTkFont(family="Arial", size=22, weight="bold"))
         welcome.place(relx = 0.5, rely = 0.1, anchor = CENTER)
-        buton = customtkinter.CTkButton(self, text="Indice de eventos", command=self.eventos_detalles)
+        
+        #Definicion de botones
+        buton = customtkinter.CTkButton(self, text = "Indice de eventos", command = self.eventos_detalles)
         buton.place(relx=0.1, rely=0.3, anchor="w")
+        buton_historial = customtkinter.CTkButton(self, text = "Historial de Eventos Asistidos", command = self.eventos_asistidos)
+        buton_historial.place(relx = 0.1, rely = 0.6, anchor = "w")
+        buton_busqueda = customtkinter.CTkButton(self, text = "Busqueda y Filtrado", command = self.busqueda_filtraciones)
+        buton_busqueda.place(relx = 0.1, rely = 0.9, anchor = "w")
     
     def eventos_detalles (self) :
 
@@ -50,3 +60,20 @@ class Aplicacion (customtkinter.CTkToplevel):
         
         #Procesamiento de datos.
         indice_eventos = Indice_de_Eventos(self)
+
+    def busqueda_filtraciones (self) :
+
+        """ Metodo por el cual se invoca a la clase Busqueda_Filtraciones."""
+
+        #Procesamiento de datos.
+        busqueda_filtracio = Busqueda_Filtraciones(self)
+
+    def eventos_asistidos (self) :
+
+        """ Este metodo invoca a la clase Historial_Eventos_Asistidos."""
+
+        #Procesamiento de datos.
+        datos = Usuario.de_json("data/nombre_usuario.json")
+        for dato in datos :
+            if (self.nombre and self.apellido) in datos.items :
+                dato = Usuario.a_json()                
