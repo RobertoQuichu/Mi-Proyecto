@@ -1,3 +1,9 @@
 [
-    {"id": "", "nombre": "q", "apellido": "q", "historial": []}
+    {
+        "id" : "",
+        "nombre" : "",
+        "apellido" : "",
+        "asitencias" : []
+    }
+     
 ]
