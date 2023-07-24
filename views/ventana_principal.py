@@ -50,13 +50,14 @@ class Aplicacion (customtkinter.CTkToplevel):
         buton = customtkinter.CTkButton(self, text = "Indice de eventos", command = self.eventos_detalles)
         buton.place(relx=0.1, rely=0.3, anchor="w")
         buton_historial = customtkinter.CTkButton(self, text = "Historial de Eventos Asistidos", command = self.eventos_asistidos)
-        buton_historial.place(relx = 0.1, rely = 0.6, anchor = "w")
+        buton_historial.place(relx = 0.1, rely = 0.5, anchor = "w")
         buton_busqueda = customtkinter.CTkButton(self, text = "Busqueda y Filtrado", command = self.busqueda_filtraciones)
-        buton_busqueda.place(relx = 0.1, rely = 0.9, anchor = "w")
+        buton_busqueda.place(relx = 0.1, rely = 0.7, anchor = "w")
 
         #Creacion de un Label transparente.
-        label = customtkinter.CTkLabel(self, text = "HOla", bg = "#E5E5E5")
+        label = customtkinter.CTkFrame(self, bg_color = "#E5E5E5")
         label.place(relx = 0.5, rely = 0.6, anchor = "w")    
+
     def eventos_detalles (self) :
 
         """ Metodo por el cual se invoca a la clase Indice_de_eventos."""
@@ -78,5 +79,4 @@ class Aplicacion (customtkinter.CTkToplevel):
         #Procesamiento de datos.
         datos_usuarios = Usuario.cargar_usuarios("data/nombre_usuarios")
         #if (apellido == datos_usuarios.apellido and nombre == datos_usuarios.nombre) :
-
 
