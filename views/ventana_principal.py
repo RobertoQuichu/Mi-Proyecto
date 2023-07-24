@@ -53,7 +53,10 @@ class Aplicacion (customtkinter.CTkToplevel):
         buton_historial.place(relx = 0.1, rely = 0.6, anchor = "w")
         buton_busqueda = customtkinter.CTkButton(self, text = "Busqueda y Filtrado", command = self.busqueda_filtraciones)
         buton_busqueda.place(relx = 0.1, rely = 0.9, anchor = "w")
-    
+
+        #Creacion de un Label transparente.
+        label = customtkinter.CTkLabel(self, text = "HOla", bg = "#E5E5E5")
+        label.place(relx = 0.5, rely = 0.6, anchor = "w")    
     def eventos_detalles (self) :
 
         """ Metodo por el cual se invoca a la clase Indice_de_eventos."""
@@ -73,7 +76,7 @@ class Aplicacion (customtkinter.CTkToplevel):
         """ Este metodo invoca a la clase Historial_Eventos_Asistidos."""
 
         #Procesamiento de datos.
-        datos = Usuario.de_json("data/nombre_usuario.json")
-        for dato in datos :
-            if (self.nombre and self.apellido) in datos.items :
-                dato = Usuario.a_json()                
+        datos_usuarios = Usuario.cargar_usuarios("data/nombre_usuarios")
+        #if (apellido == datos_usuarios.apellido and nombre == datos_usuarios.nombre) :
+
+

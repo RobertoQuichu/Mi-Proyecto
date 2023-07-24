@@ -39,28 +39,18 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
             imagen_evento = customtkinter.CTkImage(light_image = Image.open(f"assets/{evento.imagen}"), size=(200, 200))
             self.imagenes.append(imagen_evento)
     
-    def mostrar_detalles_evento(self, event):
-    
-        #Obtener el índice del evento seleccionado
-        index = event.widget.curselection()
+    def mostrar_detalles_evento(self, event, Listbox):
+        # Obtener el índice del evento seleccionado en el ListBox
+        index = Listbox.curselection()
         if index:
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
 
-            #Mostrar una ventana emergente con los detalles del evento
-            detalles_ventana = customtkinter.CTkToplevel(self)
-            detalles_ventana.title(evento_seleccionado.nombre)
+            # Crear una etiqueta para mostrar la imagen del evento seleccionado
+            imagen_label = customtkinter.CTkLabel(self, image=self.imagenes[index])
+            imagen_label.place(relx=0.5, rely=0.25, anchor=CENTER)
 
-            #Cargar y mostrar la imagen del evento
-            imagen_evento = customtkinter.CTkImage(light_image = Image.open("assets/" + evento_seleccionado.imagen), size = (200, 200))
-            etiqueta_imagen = customtkinter.CTkLabel(detalles_ventana, image=imagen_evento)
-            etiqueta_imagen.pack()
-
-            #Crear etiquetas para mostrar los detalles del evento
-            customtkinter.CTkLabel(detalles_ventana, text=f"Artista: {evento_seleccionado.artista}").pack()
-            customtkinter.CTkLabel(detalles_ventana, text=f"Género: {evento_seleccionado.genero}").pack()
-            customtkinter.CTkLabel(detalles_ventana, text=f"Ubicación: {evento_seleccionado.ubicacion}").pack()
-            customtkinter.CTkLabel(detalles_ventana, text=f"Hora de inicio: {evento_seleccionado.hora_inicio}").pack()
-            customtkinter.CTkLabel(detalles_ventana, text=f"Hora de fin: {evento_seleccionado.hora_fin}").pack()
-            customtkinter.CTkLabel(detalles_ventana, text=f"Descripción: {evento_seleccionado.descripcion}").pack()
-            detalles_ventana.grab_set()
+            # Crear una etiqueta para mostrar los detalles del evento seleccionado
+            detalles_label = customtkinter.CTkLabel(self, text=f"Nombre: {evento_seleccionado.nombre}\nFecha: {evento_seleccionado.fecha}\nLugar: {evento_seleccionado.lugar}")
+            detalles_label.place(relx=0.5, rely=0.75, anchor=CENTER)
+    
