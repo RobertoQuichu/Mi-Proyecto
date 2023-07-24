@@ -78,10 +78,3 @@ class Inicio_de_app(customtkinter.CTk)  :
             self.app.protocol("WW_DELETE_WINDOW", self.withdraw())
         else:
             CTkMessagebox(title="Campo Vacio", message="Por favor ingrese sus datos")
-
-class Frame (customtkinter.CTkFrame) :
-
-    """ """
-
-    #Declaracion de metodos.
-     
