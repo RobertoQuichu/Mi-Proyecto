@@ -31,7 +31,7 @@ class Inicio_de_app(customtkinter.CTk)  :
         
         #Creacion de un Frame.
         frame = customtkinter.CTkFrame(self, width=310)
-        frame.grid(sticky="nsew")
+        frame.grid(sticky="nsew", padx = 5, pady = 5)
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
         frame.grid_rowconfigure(0, weight=1)

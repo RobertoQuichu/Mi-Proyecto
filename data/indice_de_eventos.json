@@ -12,11 +12,11 @@
     {"nombre" : "Concierto 2", 
      "artista" : "Abel Pintos", 
      "genero" : "Pop latino Balada romántica", 
-     "ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
+     "ubicacion" : "Estadio de Velez Sarsfield, Buenos Aires",
      "id_ubicacion" : 2,
      "hora_inicio" : "2023-11-18T21:00",
      "hora_fin" : "2023-11-18T23:00",
-     "descripcion" : "Proximo concierot de Abel Pintos.",
+     "descripcion" : "Proximo concierto de Abel Pintos.",
      "imagen" : "imagen2.jpg"
     }
 ]
