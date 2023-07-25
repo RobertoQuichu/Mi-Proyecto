@@ -11,7 +11,7 @@
     },
     {"nombre" : "Concierto 2", 
      "artista" : "Abel Pintos", 
-     "genero" : "Pop latino Balada romántica", 
+     "genero" : "Pop latino Balada romantica", 
      "ubicacion" : "Estadio de Velez Sarsfield, Buenos Aires",
      "id_ubicacion" : 2,
      "hora_inicio" : "2023-11-18T21:00",
