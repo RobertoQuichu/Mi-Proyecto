@@ -85,6 +85,9 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         artista = self.entrada_artista.get()
         resultado = []
 
+        #Borramos los resultados anteriores de la listbox.
+        self.listbox.delete(0, END)
+
         if not nombre_evento and not genero and not artista:
             CTkMessagebox(title="Campos vacíos", message="Rellene al menos uno de los campos de búsqueda.")
             return
@@ -92,15 +95,15 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         #Cargar eventos del archivo json.
         for evento in self.eventos :
             if (
-                nombre_evento.lower() in evento.nombre.lower()
+                nombre_evento.lower() == evento.nombre.lower()
                 and genero.lower() in evento.genero.lower()
                 and artista.lower() in evento.artista.lower()
                ): 
                 resultado.append(evento)
         if resultado :
-            print(f"Evento Encontrado")
+            self.agregar_eventos_encontrado(resultado)
         else :
-            CTkMessagebox(title="No encontrado", message="No se encontro un evento con las caracteristcas mencionadas")
+            CTkMessagebox(title="No encontrado", message="No se encontro un evento con las caracteristicas mencionadas")
     
     def busqueda_filtrado (self) :
         
@@ -119,13 +122,12 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
             return
         
         for evento in self.eventos :
-            if (evento.hora_inicio[11:] == hora and (ubicacion.lower() in evento.ubicacion.lower())) :
-                print("valor encontrado") 
+            if (evento.hora_inicio[11:] == hora and (ubicacion.lower() in evento.ubicacion.lower())) : 
                 resultado.append(evento)
         if resultado :
             self.agregar_eventos_encontrado(resultado)
         else :
-            CTkMessagebox(title="No encontrado", message="No se encontro un evento con las caracteristcas mencionadas") 
+            CTkMessagebox(title="No encontrado", message="No se encontro un evento con las caracteristicas mencionadas") 
 
     def agregar_eventos_encontrado (self, eventos_encontrados) :
 
