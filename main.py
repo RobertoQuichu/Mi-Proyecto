@@ -6,7 +6,7 @@ from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
 
-customtkinter.set_appearance_mode("System")
+customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 
@@ -36,7 +36,9 @@ class Inicio_de_app(customtkinter.CTk)  :
 
         #Creacion de un frame principal.
         self.frame_principal = customtkinter.CTkFrame(self)
-        self.frame_principal.grid()
+        self.frame_principal.pack(fill = BOTH, expand = True)
+        self.frame_principal.grid_rowconfigure(0, weight=1)
+        self.frame_principal.grid_columnconfigure(0, weight=1)
 
         #Creacion de un Frame para los botones.
         self.frame = customtkinter.CTkFrame(self.frame_principal, width=110, height = 400)
@@ -87,12 +89,13 @@ class Inicio_de_app(customtkinter.CTk)  :
 
             #Guardamos el nuevo usuario en el archivo JSON
             nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
-            self.frame_principal.grid_forget()        
+            self.frame_principal.pack_forget()        
             self.app = Aplicacion(self, nombre, apellido)
-            self.app.grid(sticky = "snew", row = 0, column = 0)
+            self.app.pack(fill = BOTH, expand = True)
+            self.app.grid_rowconfigure(0, weight=1)
+            self.app.grid_columnconfigure(0, weight=1)
         else:
             CTkMessagebox(title="Campo Vacio", message="Por favor ingrese sus datos")
-
 
 #Inicializador de la aplicacion.
 if __name__ == '__main__' :

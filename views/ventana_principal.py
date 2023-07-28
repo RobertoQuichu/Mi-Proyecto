@@ -22,21 +22,21 @@ class Aplicacion (customtkinter.CTkFrame) :
 
         #Texto de bienvenida.
         self.welcome = customtkinter.CTkLabel(self, text = f"Bienvenido {self.nombre} {self.apellido}", font = customtkinter.CTkFont(family="Arial", size=18, weight="bold"))
-        self.welcome.grid(row=0, column=0, pady=10, columnspan=2)
+        self.welcome.grid(row = 0, column = 0, columnspan = 2, sticky = "snew")
         
         #Definicion de botones
         self.frame_boton = customtkinter.CTkFrame(self)
-        self.frame_boton.grid(row = 1, column = 0, pady = 10, padx = 10, sticky = "nsew")
+        self.frame_boton.grid(row = 2, column = 0, padx = 5, pady = 30)
         self.buton = customtkinter.CTkButton(self.frame_boton, text = "Indice de eventos", command = self.eventos_detalles)
-        self.buton.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "ew")
+        self.buton.grid(row = 0, column = 0, padx = 10, pady = 10)
         self.buton_historial = customtkinter.CTkButton(self.frame_boton, text = "Historial de Eventos Asistidos", command = self.eventos_asistidos)
-        self.buton_historial.grid(row = 1, column = 0, padx = 10, pady = 10, sticky = "ew")
+        self.buton_historial.grid(row = 1, column = 0, padx = 10, pady = 10)
         self.buton_busqueda = customtkinter.CTkButton(self.frame_boton, text = "Busqueda y Filtrado", command = self.busqueda_filtraciones)
-        self.buton_busqueda.grid(row = 2, column = 0, padx = 10, pady = 10, sticky = "ew")
+        self.buton_busqueda.grid(row = 2, column = 0, padx = 10, pady = 10)
 
         #Creacion de un Label transparente.
-        self.label = customtkinter.CTkFrame(self, bg_color = "#E5E5E5")
-        self.label.grid(column = 3, row = 1, sticky = "snew")    
+        self.label = customtkinter.CTkFrame(self, width = 250, height = 150)
+        self.label.grid(row = 2, column = 1, padx = 40, pady = 30)    
 
     def eventos_detalles (self) :
 

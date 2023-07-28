@@ -1,5 +1,6 @@
 #Importacion de funciones.
 from tkinter import *
+from views.detalles_eventos import Detalles_Eventos
 import customtkinter
 from CTkMessagebox import CTkMessagebox
 from models.eventos import Eventos
@@ -19,7 +20,16 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.eventos = eventos
 
-        self.tabview = customtkinter.CTkTabview(self, width=350)
+        #Frame principal.
+        self.frame_pri = customtkinter.CTkFrame(self)
+        self.frame_pri.grid(row = 0, column = 0, sticky = "snew")
+        self.frame_pri.grid_rowconfigure(0, weight=1)
+        self.frame_pri.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
+        #Creacion de una tabla.
+        self.tabview = customtkinter.CTkTabview(self.frame_pri, width=350)
         self.tabview.grid(row=0, column=1, padx=10, pady=10, sticky="w")
         self.tabview.add("Busqueda")
         self.tabview.add("Filtrado")
@@ -64,12 +74,24 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         self.boton_filtro.grid(row = 3, column = 0, padx = 5, pady = 5)
  
         #Frame para contener la listabox de eventos encontrados.
-        self.frame2 = customtkinter.CTkFrame(self, width=350, height = 200)
+        self.frame2 = customtkinter.CTkFrame(self.frame_pri, width=350, height = 200)
         self.frame2.grid(row = 0, column = 2, padx = 10, pady = 10)
 
         #Creacion de una Listbox para mostrar los eventos encontrados.
         self.listbox = Listbox(self.frame2, height=15, width = 30)
         self.listbox.grid(row = 0, column = 0, padx = 10, pady = 10)
+        self.listbox.bind("<Double-Button-1>", self.seleccionar_evento)
+
+    def seleccionar_evento (self, event) :
+
+        # Obtener el índice del evento seleccionado en el ListBox
+        index = self.listbox.curselection()
+        if index:
+            index = int(index[0])
+            evento_seleccionado = self.eventos[index]
+            self.detalles = Detalles_Eventos(self)
+            self.detalles.grid(row = 0, column = 0, sticky = "snew")
+
 
     def busqueda (self) :
 
