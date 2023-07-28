@@ -32,7 +32,8 @@ class Inicio_de_app(customtkinter.CTk)  :
         self.position_right = int(self.winfo_screenwidth() / 2 - self.window_width / 2)
         self.position_down = int(self.winfo_screenheight() / 2 - self.window_height / 2)
         self.geometry(f'+{self.position_right}+{self.position_down}')
-        
+        self.resizable(False, False)
+
         #Creacion de un frame principal.
         self.frame_principal = customtkinter.CTkFrame(self)
         self.frame_principal.grid()
@@ -86,9 +87,9 @@ class Inicio_de_app(customtkinter.CTk)  :
 
             #Guardamos el nuevo usuario en el archivo JSON
             nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
-
-            self.app = Aplicacion(nombre, apellido)
-            self.app.protocol("WW_DELETE_WINDOW", self.withdraw())
+            self.frame_principal.grid_forget()        
+            self.app = Aplicacion(self, nombre, apellido)
+            self.app.grid(sticky = "snew", row = 0, column = 0)
         else:
             CTkMessagebox(title="Campo Vacio", message="Por favor ingrese sus datos")
 
