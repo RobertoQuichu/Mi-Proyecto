@@ -90,7 +90,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         if index:
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
-            self.detalles = Detalles_Eventos(self)
+            self.detalles = Detalles_Eventos(self, evento_seleccionado)
             self.detalles.grid(row=0, column=0, sticky="nsew")
 
 

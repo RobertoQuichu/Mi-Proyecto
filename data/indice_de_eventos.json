@@ -2,7 +2,7 @@
     {"nombre" : "Concierto de Rock", 
      "artista" : "Gustavo Cerati", 
      "genero" : "Rock", 
-     "ubicacion" : "Estadio de Fútbol de la Universidad Simón Bolívar en Caracas",
+     "ubicacion" : "Estadio de Futbol de la Universidad Simon Bolivar en Caracas",
      "id_ubicacion" : 1,
      "hora_inicio" : "2010-05-15T21:00",
      "hora_fin" : "2010-05-15T23:00",

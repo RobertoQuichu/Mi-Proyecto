@@ -20,7 +20,6 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.resizable(False, False)
         
         #Creacion de un frame.
-        self.config(bg = "red")
         self.frame = customtkinter.CTkFrame(self)
         self.frame.grid(row=0, column=0, sticky="nsew") 
 
@@ -56,8 +55,9 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         if index:
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
-            self.detallitos = Detalles_Eventos(self)
+            self.detallitos = Detalles_Eventos(self, evento_seleccionado)
             self.detallitos.grid(row=0, column=0, sticky="nsew")
+            print(evento_seleccionado)
 
 
     
