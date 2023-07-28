@@ -40,7 +40,7 @@ class Aplicacion (customtkinter.CTkFrame) :
 
     def eventos_detalles (self) :
 
-        """ Metodo por el cual se invoca a la clase Indice_de_eventos."""
+        """ Metodo por el cual se invoca a l a clase Indice_de_eventos."""
         
         #Procesamiento de datos.
         indice_eventos = Indice_de_Eventos(self)

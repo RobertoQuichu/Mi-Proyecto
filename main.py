@@ -6,7 +6,7 @@ from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
 
-customtkinter.set_appearance_mode("dark")
+customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 

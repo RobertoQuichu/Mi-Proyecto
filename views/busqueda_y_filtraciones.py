@@ -17,6 +17,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         super().__init__(ventana)
         self.title("Busqueda y Filtraciones.")
         self.geometry("570x300")    
+        self.resizable(False, False)
         eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.eventos = eventos
 
@@ -90,7 +91,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
             self.detalles = Detalles_Eventos(self)
-            self.detalles.grid(row = 0, column = 0, sticky = "snew")
+            self.detalles.grid(row=0, column=0, sticky="nsew")
 
 
     def busqueda (self) :
