@@ -25,16 +25,12 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         self.grid_columnconfigure(1, weight=0)
 
         #Creacion de un frame para mostrar los detalles del evento.
-        self.frame = customtkinter.CTkFrame(self)
-        self.frame.grid(row=0, column=0, columnspan=2, sticky="nsew")
-
-        #Creacion de un label para mostrar los detalles.
-        self.label = customtkinter.CTkLabel(self.frame, text="", font = customtkinter.CTkFont(family="Arial", size=12))
-        self.label.grid(pady=20, sticky="nsew")
+        self.scroll = customtkinter.CTkScrollableFrame(self, orientation = "horizontal")
+        self.scroll.grid(row=0, column=0, columnspan=2, sticky="nsew", padx = 5, pady = 5)
 
         #Creacion de un frame para los botones.
         self.button_frame = customtkinter.CTkFrame(self, bg_color = "transparent")
-        self.button_frame.grid(row=0, column=2, sticky="ns")
+        self.button_frame.grid(row=0, column=2, sticky="ns", padx = 5, pady = 5)
 
         #Boton de retorno
         self.boton = customtkinter.CTkButton(self.button_frame, text="Volver", command=self.back)
@@ -57,11 +53,15 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
     def muestra_detalles (self) :
 
         """ """
-        info = f"""Nombre: {self.evento_seleccionado.nombre}\nArtista: {self.evento_seleccionado.artista}\nGenero: {self.evento_seleccionado.genero}\n
-Ubicacion: {self.evento_seleccionado.ubicacion}\nHora de incio: {self.evento_seleccionado.hora_inicio}\nHora de fin: {self.evento_seleccionado.hora_fin}\n
-Descripcion: {self.evento_seleccionado.descripcion}\nImagen: {self.evento_seleccionado.imagen}"""
-        self.label["text"] = info
-        print(info)
+
+        customtkinter.CTkLabel(self.scroll, text=f"Artista: {self.evento_seleccionado.artista}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Género: {self.evento_seleccionado.genero}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Ubicación: {self.evento_seleccionado.ubicacion}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Descripción: {self.evento_seleccionado.descripcion}").grid(sticky = "w")
+        
+        print("hola")
 
     def cargar_imagenes (self) :
 
