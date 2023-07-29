@@ -53,6 +53,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         # Obtener el índice del evento seleccionado en el ListBox
         index = self.lista_eventos.curselection()
         if index:
+
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
             self.detallitos = Detalles_Eventos(self, evento_seleccionado)

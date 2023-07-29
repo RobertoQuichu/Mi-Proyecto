@@ -2,6 +2,7 @@
 from models.eventos import Eventos
 from models.ubicaciones import Ubicacion
 from PIL import Image
+from views.rewies import Rewies
 import customtkinter
 
 class Detalles_Eventos (customtkinter.CTkFrame) :
@@ -18,18 +19,23 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         self.eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.ubicaciones = Ubicacion.cargar_ubicaciones("data/ubicaciones.json")
         self.imagenes = []
+        self.grid_columnconfigure(0, weight = 1)
+        self.grid_rowconfigure(0, weight = 1)
+
+        #Creacion de un frame principal.
+        self.frame_pri = customtkinter.CTkFrame(self)
+        self.frame_pri.grid(row = 0, column = 0, sticky = "snew")
 
         #Configurar las filas y columnas del CTkFrame
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=0)
+        self.frame_pri.grid_rowconfigure(0, weight=1)
+        self.frame_pri.grid_columnconfigure(0, weight=1)
 
         #Creacion de un frame para mostrar los detalles del evento.
-        self.scroll = customtkinter.CTkScrollableFrame(self, orientation = "horizontal")
+        self.scroll = customtkinter.CTkScrollableFrame(self.frame_pri, orientation = "horizontal")
         self.scroll.grid(row=0, column=0, columnspan=2, sticky="nsew", padx = 5, pady = 5)
 
         #Creacion de un frame para los botones.
-        self.button_frame = customtkinter.CTkFrame(self, bg_color = "transparent")
+        self.button_frame = customtkinter.CTkFrame(self.frame_pri, bg_color = "transparent")
         self.button_frame.grid(row=0, column=2, sticky="ns", padx = 5, pady = 5)
 
         #Boton de retorno
@@ -37,7 +43,7 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         self.boton.grid(row = 2, column = 0, padx = 10, pady = 10)
 
         #Boton de reseñas.
-        self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text="Escribir una reseña.")
+        self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text="Escribir una reseña.", command = self.resenas_rewies)
         self.boton_reseñas.grid(row = 3, column=0, padx = 10, pady = 10)
 
         #Boton para compartir evento en redes sociales.
@@ -60,8 +66,6 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio}").grid(sticky = "w")
         customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin}").grid(sticky = "w")
         customtkinter.CTkLabel(self.scroll, text=f"Descripción: {self.evento_seleccionado.descripcion}").grid(sticky = "w")
-        
-        print("hola")
 
     def cargar_imagenes (self) :
 
@@ -78,3 +82,8 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
 
         self.grid_forget()
 
+    def resenas_rewies (self) :
+        
+        self.grid_forget()
+        self.resenas = Rewies(self, self.evento_seleccionado)
+        self.resenas.grid(row = 0, column = 0, sticky = "snew")
