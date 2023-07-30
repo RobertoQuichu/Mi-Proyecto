@@ -18,7 +18,7 @@ class Rewies (customtkinter.CTkFrame) :
 
         #Creacion de un frame principal
         self.frame = customtkinter.CTkFrame(self, fg_color="transparent")
-        self.frame.grid(row = 0, column = 0, sticky = "e")
+        self.frame.grid(row = 0, column = 0, sticky = "w")
         self.frame.grid_columnconfigure(0, weight = 1)
 
         #Boton de retorno.
@@ -48,7 +48,7 @@ class Rewies (customtkinter.CTkFrame) :
     def afirmacion (self) :
         
         #Cuadro de texto.
-        self.frame2 = customtkinter.CTkFrame(self)
+        self.frame2 = customtkinter.CTkFrame(self, fg_color="transparent")
         self.frame2.grid(row = 4, column = 0, sticky = "snew")     
 
         self.label = customtkinter.CTkLabel(self.frame2, text = f"Escribe una reseña sobre el evento: {self.evento_seleccionado.nombre}", font= customtkinter.CTkFont(family="Arial", size=12, weight="bold"))

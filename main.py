@@ -6,7 +6,7 @@ from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
 
-customtkinter.set_appearance_mode("dark")
+customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 
@@ -52,7 +52,7 @@ class Inicio_de_app(customtkinter.CTk)  :
         self.imagen_label.grid(padx = 10, pady = 10)
 
         #Creacion de un label de bienvenidad.
-        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold"))
+        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold", underline = True, slant = "italic"), text_color = "#2F242C")
         self.label.grid(row = 0, column = 0, columnspan=2, padx = 10, pady = 10)
 
         #Creacion de etiqueta y entrada para el nombre.

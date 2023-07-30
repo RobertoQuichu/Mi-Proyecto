@@ -25,7 +25,7 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.frame_bienvenida = customtkinter.CTkFrame(self)
         self.frame_bienvenida.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "w")
         self.frame_bienvenida.grid_columnconfigure(0, weight = 1)
-        self.welcome = customtkinter.CTkLabel(self.frame_bienvenida, text = f"Bienvenido {self.nombre} {self.apellido}", font = customtkinter.CTkFont(family="Arial", size=18, weight="bold"))
+        self.welcome = customtkinter.CTkLabel(self.frame_bienvenida, text = f"Bienvenido {self.nombre} {self.apellido}", font = customtkinter.CTkFont(family="Arial", size=18, weight="bold", underline = True, slant = "italic"), text_color = "#2F242C")
         self.welcome.grid(row = 0, column = 0)
         
         #Definicion de botones
@@ -43,11 +43,11 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.boton_volver.grid(row = 3, column = 0, padx = 10, pady = 10)
 
         #Frame de imagen.
-        self.frame_imagen2 = customtkinter.CTkFrame(self)
-        self.frame_imagen2.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
-        self.imagen2 = customtkinter.CTkImage(light_image=Image.open("data/palera.jpg"), size=(300, 400))
-        self.imagen_label2 = customtkinter.CTkLabel(master=self.frame_imagen, image=self.imagen, text="")
-        self.imagen_label2.grid(padx=10, pady=10)
+        self.frame_imagen = customtkinter.CTkFrame(self)
+        self.frame_imagen.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        """self.imagen2 = customtkinter.CTkImage(light_image=Image.open("data/palera.jpg"), size=(300, 400))
+        self.imagen_label = customtkinter.CTkLabel(master=self.frame_imagen, image=self.imagen, text="")
+        self.imagen_label.grid(padx=10, pady=10)"""
 
     def eventos_detalles (self) :
 

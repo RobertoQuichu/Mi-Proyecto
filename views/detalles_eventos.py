@@ -63,8 +63,8 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         customtkinter.CTkLabel(self.scroll, text=f"Artista: {self.evento_seleccionado.artista}").grid(sticky = "w")
         customtkinter.CTkLabel(self.scroll, text=f"Género: {self.evento_seleccionado.genero}").grid(sticky = "w")
         customtkinter.CTkLabel(self.scroll, text=f"Ubicación: {self.evento_seleccionado.ubicacion}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio[11:]}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin[11:]}").grid(sticky = "w")
         customtkinter.CTkLabel(self.scroll, text=f"Descripción: {self.evento_seleccionado.descripcion}").grid(sticky = "w")
 
     def cargar_imagenes (self) :

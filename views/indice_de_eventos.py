@@ -33,8 +33,9 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.frame.grid_columnconfigure(0, weight=1)
         
         #Creacion de una Listbox.
-        self.lista_eventos = Listbox(self.frame, width= 100, height = 100)
+        self.lista_eventos = Listbox(self.frame, width= 100, height = 100, fg = "#2F242C", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold"))
         self.lista_eventos.grid(row= 0, column = 0, padx = 10, pady = 10, sticky="w")
+        self.lista_eventos.config(bg = "#E5E5E5", borderwidth = 5)
 
         #Imagen de adorno.
         self.imagen_indices = customtkinter.CTkImage(light_image = Image.open("assets/evento1.jpg"), size = (300, 300))
