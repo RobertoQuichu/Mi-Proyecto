@@ -85,5 +85,5 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
     def resenas_rewies (self) :
         
         self.frame_pri.grid_forget()
-        self.resenas = Rewies(self, self.evento_seleccionado)
+        self.resenas = Rewies(self, self.evento_seleccionado, self)
         self.resenas.grid(row = 0, column = 0, sticky = "snew")
