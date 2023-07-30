@@ -4,6 +4,7 @@ from CTkMessagebox import CTkMessagebox
 from views.ventana_principal import Aplicacion
 from models.usuarios import Usuario
 from PIL import Image
+from controller.controlador_frame import Controlador_Frames
 import customtkinter
 
 customtkinter.set_appearance_mode("dark")

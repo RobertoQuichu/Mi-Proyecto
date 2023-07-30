@@ -1,4 +1,5 @@
 #Importacion de funciones.
+from controller.controlador_frame import Controlador_Frames
 from tkinter import *
 from CTkMessagebox import CTkMessagebox
 from models.reacciones import Reacciones
@@ -7,15 +8,15 @@ import customtkinter
 #Declaracion de clases.
 class Rewies (customtkinter.CTkFrame) :
 
-    def __init__ (self, master, evento_seleccionado, detalles_eventos) :
+    def __init__ (self, master, evento_seleccionado, controlador_frames) :
 
         """ Metodo constructor."""
 
         super().__init__(master)
         self.master = master
         self.evento_seleccionado = evento_seleccionado
-        self.detalles_eventos = detalles_eventos
-        
+        self.controlador_frames = controlador_frames
+
         #Creacion de un frame principal
         self.frame = customtkinter.CTkFrame(self, fg_color="transparent")
         self.frame.grid(row = 0, column = 0, sticky = "e")
@@ -67,8 +68,7 @@ class Rewies (customtkinter.CTkFrame) :
 
     def volver (self) :
 
-        self.grid_forget()
-        self.detalles_eventos.mostrar_detalles_evento()
+       self.controlador_frames.volver_vista()
         
     def feliz (self) :
 

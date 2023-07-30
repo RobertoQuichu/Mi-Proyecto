@@ -1,4 +1,5 @@
 #Importacion de funciones.
+from controller.controlador_frame import Controlador_Frames
 from tkinter import *
 from models.ubicaciones import Ubicacion
 from views.detalles_eventos import Detalles_Eventos

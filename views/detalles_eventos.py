@@ -1,4 +1,5 @@
 #Importacion de funciones.
+from controller.controlador_frame import Controlador_Frames
 from models.eventos import Eventos
 from models.ubicaciones import Ubicacion
 from PIL import Image
@@ -16,6 +17,7 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         super().__init__(master) 
         self.master = master
         self.evento_seleccionado = evento_seleccionado
+        self.controlador_frames = Controlador_Frames() 
         self.eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.ubicaciones = Ubicacion.cargar_ubicaciones("data/ubicaciones.json")
         self.imagenes = []
@@ -85,5 +87,5 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
     def resenas_rewies (self) :
         
         self.frame_pri.grid_forget()
-        self.resenas = Rewies(self, self.evento_seleccionado, self)
+        self.resenas = Rewies(self, self.evento_seleccionado, self.controlador_frames)
         self.resenas.grid(row = 0, column = 0, sticky = "snew")
