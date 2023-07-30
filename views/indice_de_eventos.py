@@ -16,7 +16,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
 
         super().__init__(ventana)
         self.title("Indice de eventos")
-        self.geometry("570x300")
+        self.geometry("600x350")
         self.resizable(False, False)
         
         #Creacion de un frame.
@@ -32,8 +32,8 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.frame.grid_columnconfigure(0, weight=1)
         
         #Creacion de una Listbox.
-        self.lista_eventos = Listbox(self.frame, width= 30, height = 10)
-        self.lista_eventos.grid(padx = 10, pady = 10, sticky="nsew")
+        self.lista_eventos = Listbox(self.frame, width= 10, height = 10)
+        self.lista_eventos.grid(padx = 50, pady = 50, sticky="nsew")
 
         #Boton para explorar eventos.
         self.boton = customtkinter.CTkButton(self.frame, text = "Explorar Evento")
@@ -58,7 +58,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
             evento_seleccionado = self.eventos[index]
             self.detallitos = Detalles_Eventos(self, evento_seleccionado)
             self.detallitos.grid(row=0, column=0, sticky="nsew")
-            print(evento_seleccionado)
-
+            self.detallitos.grid_columnconfigure(0, weight = 1)
+            self.detallitos.grid_rowconfigure(0, weight = 1)
 
     

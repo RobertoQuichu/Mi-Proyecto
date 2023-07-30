@@ -16,7 +16,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         """Metodo Constructor."""
         super().__init__(ventana)
         self.title("Busqueda y Filtraciones.")
-        self.geometry("570x300")    
+        self.geometry("600x350")    
         self.resizable(False, False)
         eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.eventos = eventos
