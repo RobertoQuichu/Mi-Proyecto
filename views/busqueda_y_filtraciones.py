@@ -1,5 +1,4 @@
 #Importacion de funciones.
-from controller.controlador_frame import Controlador_Frames
 from tkinter import *
 from views.detalles_eventos import Detalles_Eventos
 import customtkinter
@@ -19,6 +18,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         self.title("Busqueda y Filtraciones.")
         self.geometry("600x350")    
         self.resizable(False, False)
+        self.iconbitmap("assets\musica.ico")
         eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.eventos = eventos
 

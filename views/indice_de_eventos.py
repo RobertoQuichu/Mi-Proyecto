@@ -1,10 +1,9 @@
 #Importacion de funciones.
-from controller.controlador_frame import Controlador_Frames
 from tkinter import *
-from models.ubicaciones import Ubicacion
 from views.detalles_eventos import Detalles_Eventos
 import customtkinter
 from models.eventos import Eventos
+from PIL import Image
 
 class Indice_de_Eventos (customtkinter.CTkToplevel) :
 
@@ -19,6 +18,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.title("Indice de eventos")
         self.geometry("600x350")
         self.resizable(False, False)
+        self.iconbitmap("assets\musica.ico")
         
         #Creacion de un frame.
         self.frame = customtkinter.CTkFrame(self)
@@ -33,8 +33,14 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         self.frame.grid_columnconfigure(0, weight=1)
         
         #Creacion de una Listbox.
-        self.lista_eventos = Listbox(self.frame, width= 10, height = 10)
-        self.lista_eventos.grid(padx = 50, pady = 50, sticky="nsew")
+        self.lista_eventos = Listbox(self.frame, width= 100, height = 100)
+        self.lista_eventos.grid(row= 0, column = 0, padx = 10, pady = 10, sticky="w")
+
+        #Imagen de adorno.
+        self.imagen_indices = customtkinter.CTkImage(light_image = Image.open("assets/evento1.jpg"), size = (300, 300))
+        self.imagen_label = customtkinter.CTkLabel(master = self.frame, image= self.imagen_indices, text = "")
+        self.imagen_label.grid(row = 0, column = 1, padx = 10, pady = 10)
+
 
         #Boton para explorar eventos.
         self.boton = customtkinter.CTkButton(self.frame, text = "Explorar Evento")

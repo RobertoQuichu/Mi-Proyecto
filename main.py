@@ -4,7 +4,6 @@ from CTkMessagebox import CTkMessagebox
 from views.ventana_principal import Aplicacion
 from models.usuarios import Usuario
 from PIL import Image
-from controller.controlador_frame import Controlador_Frames
 import customtkinter
 
 customtkinter.set_appearance_mode("dark")
@@ -48,9 +47,9 @@ class Inicio_de_app(customtkinter.CTk)  :
         #Creacion de un Frame para una imagen.
         self.frame_imagen = customtkinter.CTkFrame(self.frame_principal, fg_color = "transparent")
         self.frame_imagen.grid(column = 1, sticky = "nsew", row = 0)
-        self.imagen = customtkinter.CTkImage(light_image = Image.open("assets\evento.jpg"), size = (300, 300))
-        self.imagen = customtkinter.CTkLabel(master = self.frame_imagen, image= self.imagen, text = "")
-        self.imagen.grid(padx = 10, pady = 10)
+        self.imagen = customtkinter.CTkImage(light_image = Image.open("assets/artificial.jpg"), size = (300, 300))
+        self.imagen_label = customtkinter.CTkLabel(master = self.frame_imagen, image= self.imagen, text = "")
+        self.imagen_label.grid(padx = 10, pady = 10)
 
         #Creacion de un label de bienvenidad.
         self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold"))
