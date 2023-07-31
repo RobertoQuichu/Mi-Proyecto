@@ -94,4 +94,4 @@ class Rewies (customtkinter.CTkFrame) :
         
         else :
         
-            CTkMessagebox(title="Campo Vacio", message="Por favor ingrese sus datos")
+            CTkMessagebox(title="Campo Vacio", message="Por favor escriba un reseña")

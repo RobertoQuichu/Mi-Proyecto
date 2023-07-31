@@ -5,8 +5,9 @@ from views.ventana_principal import Aplicacion
 from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
+import uuid
 
-customtkinter.set_appearance_mode("dark")
+customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 
@@ -86,8 +87,11 @@ class Inicio_de_app(customtkinter.CTk)  :
         #Cargamos los archivos existentes.
         if nombre and apellido:
 
+            #Generar una ID aleatoria para el usuario
+            id_usuario = str(uuid.uuid4())
+
             #Creamos una instancia de Usuario con los datos ingresados
-            nuevo_usuario = Usuario(id="", nombre=nombre, apellido=apellido, asistencias=[])
+            nuevo_usuario = Usuario(id=id_usuario, nombre=nombre, apellido=apellido, asistencias=[])
 
             #Guardamos el nuevo usuario en el archivo JSON
             nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
