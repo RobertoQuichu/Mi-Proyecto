@@ -4,7 +4,6 @@ from PIL import Image, ImageTk
 from models.eventos import Eventos 
 from models.ubicaciones import Ubicacion
 from views.mapa_planificacion import Mapas_Planificacion
-import customtkinter
 
 class Controlador_Indices :
     
@@ -28,8 +27,9 @@ class Controlador_Indices :
 
         #Procesamiento de datos.
         for evento in self.eventos :
-            imagen_evento = customtkinter.CTkImage(light_image = Image.open(f"assets/{evento.imagen}"), size=(200, 200))
+            imagen_evento = ImageTk.PhotoImage(Image.open(f"assets/{evento.imagen}").resize((150, 150)))
             self.imagenes.append(imagen_evento)
+            print(evento.imagen)
 
     def cargar_marcadores (self) :
 
@@ -46,13 +46,13 @@ class Controlador_Indices :
         indice_seleccionado = self.vista.listbox.curselection()
         
         #Obtiene el local seleccionado
-        local_seleccionado = self.eventos[indice_seleccionado[0]]
+        evento_seleccionado = self.eventos[indice_seleccionado[0]]
         
         ubicacion_seleccionada = Ubicacion(0, 0, 0, "")
         
         #Busca la ubicación correspondiente al local seleccionado
         for ubicacion in self.ubicaciones:
-            if ubicacion.id == local_seleccionado.id_ubicacion:
+            if ubicacion.id == evento_seleccionado.id_ubicacion:
                 ubicacion_seleccionada = ubicacion
                 break
         
@@ -61,9 +61,11 @@ class Controlador_Indices :
 
         print(f"Latitud: {ubicacion_seleccionada.latitud}, Longitud: {ubicacion_seleccionada.longitud}")
 
-def seleccionar_ubicacion(marcador):
+def seleccionar_ubicacion(marcador) :
     
     if marcador.image_hidden is True:
         marcador.hide_image(False)
     else:
         marcador.hide_image(True)
+    nombre_evento = marcador.text
+    print("Ubicación seleccionada: ", marcador.text)

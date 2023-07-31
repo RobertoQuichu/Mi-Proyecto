@@ -1,9 +1,6 @@
 #Importacion de funciones.
 from controller.centrar_ventanas import Centrar_Ventana
-from models.eventos import Eventos
-from models.ubicaciones import  Ubicacion
 from tkintermapview import TkinterMapView
-from PIL import Image, ImageTk
 from tkinter import *
 import customtkinter
 
@@ -15,7 +12,7 @@ class Mapas_Planificacion (customtkinter.CTkToplevel) :
     y poder planificar una ruta hasta el evento
 
     """
-    def __init__(self, ventana, seleccionar_evento_callback=None, seleccionar_ubicacion_callback=None):
+    def __init__(self, ventana, seleccionar_evento_callback = None, seleccionar_ubicacion_callback = None):
         super().__init__(ventana)
         self.seleccionar_local_callback = seleccionar_evento_callback
         self.seleccionar_ubicacion_callback = seleccionar_ubicacion_callback
@@ -23,15 +20,12 @@ class Mapas_Planificacion (customtkinter.CTkToplevel) :
         Centrar_Ventana.centrar(self)
         self.geometry("720x480")
 
-        #Carga de datos.
-        self.evento = Eventos.cargar_eventos("data/indice_de_eventos.json")
-        self.ubicaciones = Ubicacion.cargar_ubicaciones("data/ubicaciones.json")
-
         #Creacion de un frame para el mapa
         self.frame_mapa = customtkinter.CTkFrame(self)
         self.frame_mapa.grid(row = 0, column = 0, sticky = "snew")
         self.frame_mapa.grid_columnconfigure(0, weight = 1)
-        self.mapa = TkinterMapView(self.frame_mapa, width=600, height=600, corner_radius=0)
+        self.frame_mapa.grid_rowconfigure(0, weight = 1)
+        self.mapa = TkinterMapView(self.frame_mapa, width = 600, height = 600, corner_radius = 0)
         self.mapa.set_position(-24.77616437851034, -65.41079411004006)
         self.mapa.set_zoom(16)
         self.mapa.grid(sticky = "snew")
@@ -50,4 +44,4 @@ class Mapas_Planificacion (customtkinter.CTkToplevel) :
         self.listbox.insert(END, nombre)
 
     def agregar_marcador_mapa(self, latitud, longitud, texto, imagen = None) :
-        return self.mapa.set_marker(latitud, longitud, text=texto, image=imagen, command=self.seleccionar_ubicacion_callback)
+        return self.mapa.set_marker(latitud, longitud, text = texto, image = imagen, command = self.seleccionar_ubicacion_callback)

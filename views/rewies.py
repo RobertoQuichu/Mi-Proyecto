@@ -3,6 +3,7 @@ from tkinter import *
 from CTkMessagebox import CTkMessagebox
 from models.reacciones import Reacciones
 import customtkinter
+import uuid
 
 #Declaracion de clases.
 class Rewies (customtkinter.CTkFrame) :
@@ -88,9 +89,14 @@ class Rewies (customtkinter.CTkFrame) :
     def guardar (self) :
 
         texto = self.textbox.get("1.0", "end-1c")
-        if texto :
+        calification = self.slider.get()
+        if texto and calification :
             
-            Reacciones.guardar_reacciones(texto, self.reaccion_seleccionada, "data/rewies.json")
+            #Generar una ID aleatoria para el usuario
+            id_resenia = str(uuid.uuid4())
+            Reacciones.guardar_reacciones(id=id_resenia, id_evento="", id_usuario="", calificacion=calification, comentario=texto, animo=self.reaccion_seleccionada, archivo_json="data/rewies.json")
+
+
         
         else :
         

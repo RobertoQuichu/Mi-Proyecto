@@ -51,10 +51,10 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.boton_volver.grid(row = 3, column = 0, padx = 10, pady = 10)
 
         #Frame de imagen.
-        self.frame_imagen = customtkinter.CTkFrame(self.framepri)
+        """self.frame_imagen = customtkinter.CTkFrame(self.framepri)
         self.frame_imagen.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
-        """self.imagen2 = customtkinter.CTkImage(light_image=Image.open("data/palera.jpg"), size=(300, 400))
-        self.imagen_label = customtkinter.CTkLabel(master=self.frame_imagen, image=self.imagen, text="")
+        self.imagen2 = customtkinter.CTkImage(light_image = Image.open("data/palera.jpg"), size = (300, 400))
+        self.imagen_label = customtkinter.CTkLabel(master=self.frame_imagen, image=self.imagen2, text="")
         self.imagen_label.grid(padx=10, pady=10)"""
 
     def eventos_detalles (self) :
