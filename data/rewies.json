@@ -1,1 +1,9 @@
-[{"resenias": "", "reaccion": "\ud83d\ude03"}]
+[
+    {"id": "", 
+    "id_evento": "",
+    "id_usuario": "",
+    "calificacion" : "",
+    "comentario": "",
+    "animo" : ""
+    }
+]

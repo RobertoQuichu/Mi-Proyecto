@@ -11,7 +11,7 @@ class Aplicacion (customtkinter.CTkFrame) :
     """ Modelo de clase de la consola. """
 
     #Declaracion de metodos.
-    def __init__ (self, master, nombre, apellido) :
+    def __init__ (self, master, nombre, apellido, inicio_sesion) :
 
         """ Metodo Constructor."""
         super().__init__(master)
@@ -20,17 +20,25 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.master = master
         self.nombre = nombre
         self.apellido = apellido
+        self.inicio_sesion = inicio_sesion
+        self.grid_rowconfigure(0, weight = 1)
+        self.grid_columnconfigure(0, weight = 1)
+
+        #Frame principal
+        self.framepri = customtkinter.CTkFrame(self)
+        self.framepri.grid(row = 0, column = 0, sticky = "snew")
+        self.framepri.grid_columnconfigure(0, weight = 1)
+        self.framepri.grid_rowconfigure(0, weight = 1)
 
         #Texto de bienvenida.
-        self.frame_bienvenida = customtkinter.CTkFrame(self)
+        self.frame_bienvenida = customtkinter.CTkFrame(self.framepri)
         self.frame_bienvenida.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "w")
-        self.frame_bienvenida.grid_columnconfigure(0, weight = 1)
         self.welcome = customtkinter.CTkLabel(self.frame_bienvenida, text = f"Bienvenido {self.nombre} {self.apellido}", font = customtkinter.CTkFont(family="Arial", size=18, weight="bold", underline = True, slant = "italic"), text_color = "#2F242C")
-        self.welcome.grid(row = 0, column = 0)
+        self.welcome.grid(row = 0, column = 0, padx = 10, pady = 10)
         
         #Definicion de botones
-        self.frame_boton = customtkinter.CTkFrame(self)
-        self.frame_boton.grid(row = 1, column = 0, padx = 5, pady = 5, sticky = "w")
+        self.frame_boton = customtkinter.CTkFrame(self.frame_bienvenida, fg_color="transparent")
+        self.frame_boton.grid(row = 1, column = 0, padx = 5, pady = 5)
         self.buton = customtkinter.CTkButton(self.frame_boton, text = "Indice de eventos", command = self.eventos_detalles)
         self.buton.grid(row = 0, column = 0, padx = 10, pady = 10)
         self.buton_historial = customtkinter.CTkButton(self.frame_boton, text = "Historial de Eventos Asistidos", command = self.eventos_asistidos)
@@ -43,7 +51,7 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.boton_volver.grid(row = 3, column = 0, padx = 10, pady = 10)
 
         #Frame de imagen.
-        self.frame_imagen = customtkinter.CTkFrame(self)
+        self.frame_imagen = customtkinter.CTkFrame(self.framepri)
         self.frame_imagen.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         """self.imagen2 = customtkinter.CTkImage(light_image=Image.open("data/palera.jpg"), size=(300, 400))
         self.imagen_label = customtkinter.CTkLabel(master=self.frame_imagen, image=self.imagen, text="")
@@ -68,7 +76,7 @@ class Aplicacion (customtkinter.CTkFrame) :
         """ Este metodo invoca a la clase Historial_Eventos_Asistidos.""" 
                     
         #Creacion de un Label transparente.
-        self.label = customtkinter.CTkFrame(self, width = 250, height = 150)
+        self.label = customtkinter.CTkFrame(self.framepri, width = 250, height = 150)
         self.label.grid(row = 1, column = 1, padx = 40, pady = 30)    
         datos_usuarios = Usuario.cargar_usuarios("data/nombre_usuarios")
         #if (apellido == datos_usuarios.apellido and nombre == datos_usuarios.nombre) :
@@ -76,4 +84,6 @@ class Aplicacion (customtkinter.CTkFrame) :
 
     def new_sesion (self) :
 
-        self.grid_forget()
+        print("Holis")
+        self.framepri.grid_remove()
+        self.inicio_sesion.volver_inicio_sesion()

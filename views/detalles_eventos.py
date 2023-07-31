@@ -1,6 +1,7 @@
 #Importacion de funciones.
 from models.eventos import Eventos
 from models.ubicaciones import Ubicacion
+from controller.controlador_indice_eve import Controlador_Indices
 from PIL import Image
 from views.rewies import Rewies
 import customtkinter
@@ -42,19 +43,36 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         self.boton = customtkinter.CTkButton(self.button_frame, text="Volver", command=self.back)
         self.boton.grid(row = 2, column = 0, padx = 10, pady = 10)
 
-        #Boton de reseñas.
-        self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text="Escribir una reseña.", command = self.resenas_rewies)
-        self.boton_reseñas.grid(row = 3, column=0, padx = 10, pady = 10)
-
         #Boton para compartir evento en redes sociales.
         self.boton_redes = customtkinter.CTkButton(self.button_frame, text="Compartir en tus redes sociales.")
-        self.boton_redes.grid(row = 4, column = 0, padx = 10, pady = 10)
+        self.boton_redes.grid(row = 3, column = 0, padx = 10, pady = 10)
 
         #Boton para visualizar el mapa.
-        self.boton_mapa = customtkinter.CTkButton(self.button_frame, text="Visualizar en un mapa.")
-        self.boton_mapa.grid(row = 5, column = 0, padx = 10, pady = 10)
+        self.boton_mapa = customtkinter.CTkButton(self.button_frame, text="Visualizar en un mapa.", command = self.mapas_planificaciones)
+        self.boton_mapa.grid(row = 4, column = 0, padx = 10, pady = 10)
+
+        #Creacion de un swtich.
+        self.labe_asistencia = customtkinter.CTkLabel(self.button_frame, text= "¿Asistio al evento?", font = customtkinter.CTkFont(family = "Arial", size = 12, weight = "bold"))
+        self.labe_asistencia.grid(row = 5, column = 0, padx = 10, pady = 10)
+        self.combo = customtkinter.CTkComboBox(self.button_frame, values = ["", "Si", "No"], command = self.afirmaciones)
+        self.combo.grid(row = 6, column = 0, padx = 10, pady = 10)
 
         self.muestra_detalles()
+
+    def afirmaciones (self, value) :
+
+        if value == "Si":
+
+            #Boton de reseñas.  
+            self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text="Escribir una reseña", command=self.resenas_rewies, font = customtkinter.CTkFont(family = "Arial", size = 10, weight = "bold"))
+            self.boton_reseñas.grid(row = 7, column=0, padx = 10, pady = 10)
+        else:
+            if hasattr(self, 'boton_reseñas'):
+                self.boton_reseñas.grid_forget()
+
+    def mapas_planificaciones (self) :
+
+        mapa_plani = Controlador_Indices(self)
 
     def muestra_detalles (self) :
 
@@ -91,4 +109,4 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
     def volver_desde_rewies(self) :
 
         self.resenas.grid_forget()  # Oculta el frame de Rewies
-        self.frame_pri.grid(row=0, column=0, sticky="snew")  # Vuelve a mostrar el frame de Detalles_Eventos
+        self.frame_pri.grid(row = 0, column = 0, sticky = "snew")  # Vuelve a mostrar el frame de Detalles_Eventos

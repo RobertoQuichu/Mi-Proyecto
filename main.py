@@ -6,7 +6,7 @@ from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
 
-customtkinter.set_appearance_mode("system")
+customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 
@@ -25,6 +25,8 @@ class Inicio_de_app(customtkinter.CTk)  :
         self.title("App Music Tour")
         self.iconbitmap("assets\musica.ico")
         self.geometry("620x325")
+        self.rowconfigure(0, weight = 1)
+        self.columnconfigure (0, weight = 1)
 
         #Centrar ventana.
         self.window_width = self.winfo_reqwidth()
@@ -36,7 +38,7 @@ class Inicio_de_app(customtkinter.CTk)  :
 
         #Creacion de un frame principal.
         self.frame_principal = customtkinter.CTkFrame(self)
-        self.frame_principal.pack(fill = BOTH, expand = True)
+        self.frame_principal.grid(row = 0, column = 0, sticky = "snew")
         self.frame_principal.grid_rowconfigure(0, weight=1)
         self.frame_principal.grid_columnconfigure(0, weight=1)
 
@@ -89,13 +91,17 @@ class Inicio_de_app(customtkinter.CTk)  :
 
             #Guardamos el nuevo usuario en el archivo JSON
             nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
-            self.frame_principal.pack_forget()        
-            self.app = Aplicacion(self, nombre, apellido)
-            self.app.pack(fill = BOTH, expand = True)
-            self.app.grid_rowconfigure(0, weight=1)
-            self.app.grid_columnconfigure(0, weight=1)
+            self.frame_principal.grid_forget()        
+            self.app = Aplicacion(self, nombre, apellido, self)
+            self.app.grid(row = 0, column = 0, sticky = "snew")
+
         else:
             CTkMessagebox(title="Campo Vacio", message="Por favor ingrese sus datos")
+    
+    def volver_inicio_sesion (self) :
+
+        self.app.grid_forget()  # Oculta el frame de Rewies
+        self.frame_principal.grid(row = 0, column = 0, sticky = "snew")  # Vuelve a mostrar el frame de Detalles_Eventos
 
 #Inicializador de la aplicacion.
 if __name__ == '__main__' :

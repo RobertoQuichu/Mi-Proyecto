@@ -1,17 +1,17 @@
 #Importacion de funciones.
 from tkinter import *
-from PIL import Image
+from PIL import Image, ImageTk
 from models.eventos import Eventos 
 from models.ubicaciones import Ubicacion
+from views.mapa_planificacion import Mapas_Planificacion
 import customtkinter
 
 class Controlador_Indices :
     
-    def __init__(self, vista) :
-
+    def __init__(self, ventana) :
         self.imagenes = []
         self.marcadores = []
-        self.vista = vista
+        self.vista = Mapas_Planificacion(ventana, self.seleccionar_eventos, seleccionar_ubicacion)
 
         #Cargamos la ruta del archivo json
         self.eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
@@ -21,8 +21,8 @@ class Controlador_Indices :
         self.cargar_marcadores()
 
     def cargar_eventos(self) :
-        for local in self.eventos:
-            self.vista.agregar_local(local)
+        for evento in self.eventos:
+            self.vista.agregar_eventos(evento)
     
     def cargar_imagenes (self) :
 
@@ -43,10 +43,10 @@ class Controlador_Indices :
     def seleccionar_eventos(self, event):
         
         #Obtiene el índice del elemento seleccionado
-        indice_seleccionado = self.vista.lista_eventos.curselection()
+        indice_seleccionado = self.vista.listbox.curselection()
         
         #Obtiene el local seleccionado
-        local_seleccionado = self.locales[indice_seleccionado[0]]
+        local_seleccionado = self.eventos[indice_seleccionado[0]]
         
         ubicacion_seleccionada = Ubicacion(0, 0, 0, "")
         
