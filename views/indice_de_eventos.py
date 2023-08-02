@@ -10,11 +10,12 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
     """ Esta clase muestra todos los eventos almacenados en los archivos de la aplicacion."""
 
     #Declaracion de Metodos.
-    def __init__(self, ventana) :
+    def __init__(self, ventana, controlador = None) :
 
         """ Metodo constructor de la clase Indice_de_Eventos"""
 
         super().__init__(ventana)
+        self.controlador = controlador
         self.title("Indice de eventos")
         self.geometry("600x350")
         self.resizable(False, False)
@@ -64,7 +65,7 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
 
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
-            self.detallitos = Detalles_Eventos(self, evento_seleccionado)
+            self.detallitos = Detalles_Eventos(self, evento_seleccionado, self.controlador)
             self.detallitos.grid(row=0, column=0, sticky="nsew")
             self.detallitos.grid_columnconfigure(0, weight = 1)
             self.detallitos.grid_rowconfigure(0, weight = 1)

@@ -1,13 +1,13 @@
 #Importacion de funciones.
 from tkinter import * 
+from controller.controlador_de_datos import Controlador_de_Datos
 from CTkMessagebox import CTkMessagebox
 from views.ventana_principal import Aplicacion
 from models.usuarios import Usuario
 from PIL import Image
 import customtkinter
-import uuid
 
-customtkinter.set_appearance_mode("system")
+customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 class Inicio_de_app(customtkinter.CTk)  :
 
@@ -32,8 +32,10 @@ class Inicio_de_app(customtkinter.CTk)  :
         #Centrar ventana.
         self.window_width = self.winfo_reqwidth()
         self.window_height = self.winfo_reqheight()
+        
         self.position_right = int(self.winfo_screenwidth() / 2 - self.window_width / 2)
         self.position_down = int(self.winfo_screenheight() / 2 - self.window_height / 2)
+        
         self.geometry(f'+{self.position_right}+{self.position_down}')
         self.resizable(False, False)
 
@@ -50,29 +52,33 @@ class Inicio_de_app(customtkinter.CTk)  :
         #Creacion de un Frame para una imagen.
         self.frame_imagen = customtkinter.CTkFrame(self.frame_principal, fg_color = "transparent")
         self.frame_imagen.grid(column = 1, sticky = "nsew", row = 0)
+        
         self.imagen = customtkinter.CTkImage(light_image = Image.open("assets/artificial.jpg"), size = (300, 300))
         self.imagen_label = customtkinter.CTkLabel(master = self.frame_imagen, image= self.imagen, text = "")
         self.imagen_label.grid(padx = 10, pady = 10)
 
         #Creacion de un label de bienvenidad.
-        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold", underline = True, slant = "italic"), text_color = "#2F242C")
+        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold", underline = True, slant = "italic"))
         self.label.grid(row = 0, column = 0, columnspan=2, padx = 10, pady = 10)
 
         #Creacion de etiqueta y entrada para el nombre.
         self.etiqueta_nombre = customtkinter.CTkLabel(self.frame, text="Ingrese su nombre:", font=customtkinter.CTkFont(family="Arial", size=12))
         self.etiqueta_nombre.grid(row=1, column=0, padx=5, pady=10, sticky="e")
+        
         self.entrada_nombre = customtkinter.CTkEntry(self.frame)
         self.entrada_nombre.grid(row=1, column=1, padx=5, pady=10, sticky="w")
 
         #Creacion de etiqueta y entrada para el apellido.
         self.etiqueta_apellido = customtkinter.CTkLabel(self.frame, text="Ingrese su apellido:", font=customtkinter.CTkFont(family="Arial", size=12))
         self.etiqueta_apellido.grid(row=2, column=0, padx=(10, 5), pady=5, sticky="e")
+        
         self.entrada_apellido = customtkinter.CTkEntry(self.frame)
         self.entrada_apellido.grid(row=2, column=1, padx=(5, 10), pady=5, sticky="w")
 
         #Creacion de botones de inicio y de cierre.
         self.boton_inicio = customtkinter.CTkButton(self.frame, text="Iniciar Aplicacion", command=self.iniciar_app)
         self.boton_inicio.grid(row=3, column=0, columnspan=2, padx=5, pady=10)
+        
         self.boton_cierre = customtkinter.CTkButton(self.frame, text="Cerrar Aplicacion", command=self.destroy)
         self.boton_cierre.grid(row=4, column=0, columnspan=2, padx=5, pady=10)
     
@@ -87,16 +93,25 @@ class Inicio_de_app(customtkinter.CTk)  :
         #Cargamos los archivos existentes.
         if nombre and apellido:
 
-            #Generar una ID aleatoria para el usuario
-            id_usuario = str(uuid.uuid4())
+            id_usuario = Usuario.generar_id()
+            usuarios_cargados = Usuario.cargar_usuarios("data/nombre_usuario.json")
 
-            #Creamos una instancia de Usuario con los datos ingresados
-            nuevo_usuario = Usuario(id=id_usuario, nombre=nombre, apellido=apellido, asistencias=[])
+            for usuario in usuarios_cargados:
+                if usuario.nombre == nombre and usuario.apellido == apellido:
+                    id_usuario = usuario.id
+                    break
+
+            # Creamos una instancia de Usuario con los datos ingresados
+            nuevo_usuario = Usuario(id=id_usuario, nombre=nombre, apellido=apellido)
+
+            # Guardamos el usuario en el controlador
+            controlador = Controlador_de_Datos(nuevo_usuario, "data/nombre_usuario.json")
+            print(nuevo_usuario.id)
 
             #Guardamos el nuevo usuario en el archivo JSON
-            nuevo_usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
+            Usuario.guardar_usuario(nuevo_usuario ,"data/nombre_usuario.json")
             self.frame_principal.grid_forget()        
-            self.app = Aplicacion(self, nombre, apellido, self)
+            self.app = Aplicacion(self, self, controlador)
             self.app.grid(row = 0, column = 0, sticky = "snew")
 
         else:

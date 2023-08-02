@@ -11,7 +11,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
     """ """
 
     #Declaracion de metodos.
-    def __init__ (self, ventana) :
+    def __init__ (self, ventana, controler = None) :
         
         """Metodo Constructor."""
         super().__init__(ventana)
@@ -21,6 +21,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         self.iconbitmap("assets\musica.ico")
         eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.eventos = eventos
+        self.controler = controler
 
         #Frame principal.
         self.frame_pri = customtkinter.CTkFrame(self)

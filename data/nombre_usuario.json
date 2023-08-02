@@ -1,1 +1,16 @@
-[{"id": "", "nombre": "", "apellido": "", "asistencias": []}, {"id": "5350a487-7b5f-40aa-b40b-6b4d95e798a5", "nombre": "Roberto", "apellido": "Quichu", "asistencias": []}, {"id": "c008e09d-1963-4c07-8d1f-42fbf59f5fc0", "nombre": "roberto", "apellido": "quichu", "asistencias": []}]
+[
+    {
+        "id": "5350a487-7b5f-40aa-b40b-6b4d95e798a5",
+        "nombre": "Roberto",
+        "apellido": "Quichu",
+        "asistencias": []
+    },
+    {
+        "id": "cd3d8e3b-c831-45f9-bedf-a7d2ad638d2d",
+        "nombre": "roberto",
+        "apellido": "quichu",
+        "asistencias": [
+            "3a288ba2-4fd6-4b06-9c40-0f541b42b1d5"
+        ]
+    }
+]

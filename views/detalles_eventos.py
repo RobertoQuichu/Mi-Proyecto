@@ -10,13 +10,14 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
 
     """ """
 
-    def __init__(self, master, evento_seleccionado) :
+    def __init__(self, master, evento_seleccionado, controlador = None) :
 
         """Metodo constructo."""
         
         super().__init__(master) 
         self.master = master
         self.evento_seleccionado = evento_seleccionado 
+        self.controlador = controlador
         self.eventos = Eventos.cargar_eventos("data/indice_de_eventos.json")
         self.ubicaciones = Ubicacion.cargar_ubicaciones("data/ubicaciones.json")
         self.imagenes = []
@@ -54,19 +55,31 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         #Creacion de un swtich.
         self.labe_asistencia = customtkinter.CTkLabel(self.button_frame, text= "¿Asistio al evento?", font = customtkinter.CTkFont(family = "Arial", size = 12, weight = "bold"))
         self.labe_asistencia.grid(row = 5, column = 0, padx = 10, pady = 10)
+        
         self.combo = customtkinter.CTkComboBox(self.button_frame, values = ["", "Si", "No"], command = self.afirmaciones)
         self.combo.grid(row = 6, column = 0, padx = 10, pady = 10)
 
         self.muestra_detalles()
 
     def afirmaciones (self, value) :
+        
+        usuario_actual = self.controlador.get_usuario_actual()
 
-        if value == "Si":
+        if value == "Si" :
 
-            #Boton de reseñas.  
-            self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text="Escribir una reseña", command=self.resenas_rewies, font = customtkinter.CTkFont(family = "Arial", size = 10, weight = "bold"))
-            self.boton_reseñas.grid(row = 7, column=0, padx = 10, pady = 10)
-        else:
+            if usuario_actual :
+
+                self.controlador.agregar_evento_asistencia(self.evento_seleccionado.id)
+
+            self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text = "Escribir una reseña" ,command = self.resenas_rewies,
+                font=customtkinter.CTkFont(family="Arial", size=10, weight="bold"))
+            
+            self.boton_reseñas.grid(row=7, column=0, padx=10, pady=10)
+        else :
+            
+            if usuario_actual :
+                self.controlador.eliminar_evento_asistencia(self.evento_seleccionado.id)
+
             if hasattr(self, 'boton_reseñas'):
                 self.boton_reseñas.grid_forget()
 
@@ -103,10 +116,10 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
     def resenas_rewies (self) :
         
         self.frame_pri.grid_forget()
-        self.resenas = Rewies(self, self.evento_seleccionado, self)
+        self.resenas = Rewies(self, self.evento_seleccionado, self, self.controlador)
         self.resenas.grid(row = 0, column = 0, sticky = "snew")
 
     def volver_desde_rewies(self) :
 
-        self.resenas.grid_forget()  # Oculta el frame de Rewies
-        self.frame_pri.grid(row = 0, column = 0, sticky = "snew")  # Vuelve a mostrar el frame de Detalles_Eventos
+        self.resenas.grid_forget() 
+        self.frame_pri.grid(row = 0, column = 0, sticky = "snew")  

@@ -1,5 +1,7 @@
 [
-    {"nombre" : "Concierto de Rock", 
+    {
+     "id" : "36f43ac5-af2b-4c8b-8cb9-ed3f576ec366",
+     "nombre" : "Concierto de Rock", 
      "artista" : "Gustavo Cerati", 
      "genero" : "Rock", 
      "ubicacion" : "Estadio de Futbol de la Universidad Simon Bolivar en Caracas",
@@ -9,7 +11,9 @@
      "descripcion" : "Ultimo concierto de Gustavo Cerati promocionando su album 'Fueza Natural.'",
      "imagen" : "imagen1.jpg"
     },
-    {"nombre" : "Concierto 2", 
+    {
+     "id" : "3a288ba2-4fd6-4b06-9c40-0f541b42b1d5",
+     "nombre" : "Concierto 2", 
      "artista" : "Abel Pintos", 
      "genero" : "Pop latino Balada romantica", 
      "ubicacion" : "Estadio de Velez Sarsfield, Buenos Aires",
