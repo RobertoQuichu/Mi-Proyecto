@@ -31,7 +31,6 @@ class Controlador_de_Datos :
             datos = json.load(archivo)
 
         for dato in datos :
-
             if dato["id"] == self.usuario_actual.id :
                 dato["asistencias"] = self.usuario_actual.asistencias
 

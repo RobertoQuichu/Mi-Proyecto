@@ -27,8 +27,6 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         #Creacion de un frame principal.
         self.frame_pri = customtkinter.CTkFrame(self)
         self.frame_pri.grid(row = 0, column = 0, sticky = "snew")
-
-        #Configurar las filas y columnas del CTkFrame
         self.frame_pri.grid_rowconfigure(0, weight=1)
         self.frame_pri.grid_columnconfigure(0, weight=1)
 

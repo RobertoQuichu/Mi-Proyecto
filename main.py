@@ -58,28 +58,30 @@ class Inicio_de_app(customtkinter.CTk)  :
         self.imagen_label.grid(padx = 10, pady = 10)
 
         #Creacion de un label de bienvenidad.
-        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold", underline = True, slant = "italic"))
+        self.label = customtkinter.CTkLabel(self.frame, text= "Bienvenido", font = customtkinter.CTkFont(family = "Comic Sans MS", size=18, weight="bold", slant = "italic"))
         self.label.grid(row = 0, column = 0, columnspan=2, padx = 10, pady = 10)
 
         #Creacion de etiqueta y entrada para el nombre.
-        self.etiqueta_nombre = customtkinter.CTkLabel(self.frame, text="Ingrese su nombre:", font=customtkinter.CTkFont(family="Arial", size=12))
+        self.etiqueta_nombre = customtkinter.CTkLabel(self.frame, text="Ingrese su nombre:", font=customtkinter.CTkFont(family = "Tahoma", size=11))
         self.etiqueta_nombre.grid(row=1, column=0, padx=5, pady=10, sticky="e")
         
         self.entrada_nombre = customtkinter.CTkEntry(self.frame)
         self.entrada_nombre.grid(row=1, column=1, padx=5, pady=10, sticky="w")
 
         #Creacion de etiqueta y entrada para el apellido.
-        self.etiqueta_apellido = customtkinter.CTkLabel(self.frame, text="Ingrese su apellido:", font=customtkinter.CTkFont(family="Arial", size=12))
+        self.etiqueta_apellido = customtkinter.CTkLabel(self.frame, text="Ingrese su apellido:", font=customtkinter.CTkFont(family = "Tahoma", size=11))
         self.etiqueta_apellido.grid(row=2, column=0, padx=(10, 5), pady=5, sticky="e")
         
         self.entrada_apellido = customtkinter.CTkEntry(self.frame)
         self.entrada_apellido.grid(row=2, column=1, padx=(5, 10), pady=5, sticky="w")
 
         #Creacion de botones de inicio y de cierre.
-        self.boton_inicio = customtkinter.CTkButton(self.frame, text="Iniciar Aplicacion", command=self.iniciar_app)
+        self.boton_inicio = customtkinter.CTkButton(self.frame, text="Iniciar Aplicacion", command=self.iniciar_app,
+                                                    font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.boton_inicio.grid(row=3, column=0, columnspan=2, padx=5, pady=10)
         
-        self.boton_cierre = customtkinter.CTkButton(self.frame, text="Cerrar Aplicacion", command=self.destroy)
+        self.boton_cierre = customtkinter.CTkButton(self.frame, text="Cerrar Aplicacion", command=self.destroy,
+                                                    font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.boton_cierre.grid(row=4, column=0, columnspan=2, padx=5, pady=10)
     
     def iniciar_app(self):
