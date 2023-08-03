@@ -40,21 +40,24 @@ class Mapas_Planificacion (customtkinter.CTkToplevel) :
         self.frame_listbxo = customtkinter.CTkFrame(self)
         self.frame_listbxo.grid(row=0, column=0, padx=0, pady=0, sticky="nsew")
         self.frame_listbxo.grid_columnconfigure(2, weight = 1)
-        self.listbox = Listbox(self.frame_listbxo, width = 30)
+        self.listbox = Listbox(self.frame_listbxo, width = 30, fg = "#2F242C", font = customtkinter.CTkFont(family="Arial", size=15, weight="bold"))
         self.listbox.bind('<<ListboxSelect>>', seleccionar_evento_callback)
-        self.listbox.grid(row =0, column = 0, sticky = "snew")
+        self.listbox.grid(row =0, column = 0, sticky = "snew", padx = 5, pady = 5)
+        self.listbox.config(bg = "#E5E5E5", borderwidth = 5)
 
         #Boton para trazar una ruta hacia el evento.
-        self.label_ruta = customtkinter.CTkLabel(self.frame_listbxo, text = "Trazar una ruta", anchor = "w")
-        self.label_ruta.grid(row = 3, column = 0, padx=(20, 20), pady=(20, 0))
-        self.boton_ruta = customtkinter.CTkButton(self.frame_listbxo, text = "Trazar ruta", anchor = "w")
-        self.boton_ruta.grid(row = 4, column = 0, padx=(20, 20), pady=(10, 20))
+        self.label_ruta = customtkinter.CTkLabel(self.frame_listbxo, text = "Trazar una ruta", anchor = "w", font = customtkinter.CTkFont(family = "Times New Roman", size = 12, weight = "bold"))
+        self.label_ruta.grid(row = 3, column = 0, padx=(20, 20), pady = (20, 0))
+        self.boton_ruta = customtkinter.CTkButton(self.frame_listbxo, text = "Trazar ruta", anchor = "w",
+                                                  font=customtkinter.CTkFont(family = "Century Gothic", size = 11, weight = "bold"))
+        self.boton_ruta.grid(row = 4, column = 0, padx=(20, 20), pady = (10, 20))
 
         #Controlar la apariencia de la ventana.
-        self.apariencia_modo_label = customtkinter.CTkLabel(self.frame_listbxo, text="Cambiar de apariencia:", anchor="w")
+        self.apariencia_modo_label = customtkinter.CTkLabel(self.frame_listbxo, text="Cambiar de apariencia:", anchor="w", 
+                                                            font = customtkinter.CTkFont(family = "Times New Roman", size = 12, weight = "bold"))
         self.apariencia_modo_label.grid(row=5, column=0, padx=(20, 20), pady=(20, 0))
         self.apariencia_modo_menu = customtkinter.CTkOptionMenu(self.frame_listbxo, values=["Light", "Dark", "System"],
-                                                                       command=self.cambio_de_apariencia)
+                                                                       command=self.cambio_de_apariencia, font=customtkinter.CTkFont(family = "Century Gothic", size = 11, weight = "bold"))
         self.apariencia_modo_menu.grid(row=6, column=0, padx=(20, 20), pady=(10, 20))
         self.apariencia_modo_menu.set("Dark")
 

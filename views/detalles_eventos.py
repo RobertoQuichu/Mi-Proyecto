@@ -39,22 +39,27 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
         self.button_frame.grid(row=0, column=2, sticky="ns", padx = 5, pady = 5)
 
         #Boton de retorno
-        self.boton = customtkinter.CTkButton(self.button_frame, text="Volver", command=self.back)
+        self.boton = customtkinter.CTkButton(self.button_frame, text="Volver", command=self.back, 
+                                             font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.boton.grid(row = 2, column = 0, padx = 10, pady = 10)
 
         #Boton para compartir evento en redes sociales.
-        self.boton_redes = customtkinter.CTkButton(self.button_frame, text="Compartir en tus redes sociales.")
+        self.boton_redes = customtkinter.CTkButton(self.button_frame, text="Compartir en tus redes sociales.",
+                                                   font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.boton_redes.grid(row = 3, column = 0, padx = 10, pady = 10)
 
         #Boton para visualizar el mapa.
-        self.boton_mapa = customtkinter.CTkButton(self.button_frame, text="Visualizar en un mapa.", command = self.mapas_planificaciones)
+        self.boton_mapa = customtkinter.CTkButton(self.button_frame, text="Visualizar en un mapa.", command = self.mapas_planificaciones,
+                                                  font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.boton_mapa.grid(row = 4, column = 0, padx = 10, pady = 10)
 
         #Creacion de un swtich.
-        self.labe_asistencia = customtkinter.CTkLabel(self.button_frame, text= "¿Asistio al evento?", font = customtkinter.CTkFont(family = "Arial", size = 12, weight = "bold"))
+        self.labe_asistencia = customtkinter.CTkLabel(self.button_frame, text= "¿Asistio al evento?", 
+                                                      font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold"))
         self.labe_asistencia.grid(row = 5, column = 0, padx = 10, pady = 10)
         
-        self.combo = customtkinter.CTkComboBox(self.button_frame, values = ["", "Si", "No"], command = self.afirmaciones)
+        self.combo = customtkinter.CTkComboBox(self.button_frame, values = ["", "Si", "No"], command = self.afirmaciones,
+                                               font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
         self.combo.grid(row = 6, column = 0, padx = 10, pady = 10)
 
         self.muestra_detalles()
@@ -70,7 +75,7 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
                 self.controlador.agregar_evento_asistencia(self.evento_seleccionado.id)
 
             self.boton_reseñas = customtkinter.CTkButton(self.button_frame, text = "Escribir una reseña" ,command = self.resenas_rewies,
-                font=customtkinter.CTkFont(family="Arial", size=10, weight="bold"))
+                font=customtkinter.CTkFont(family = "Century Gothic", size=11, weight="bold"))
             
             self.boton_reseñas.grid(row=7, column=0, padx=10, pady=10)
         else :
@@ -89,12 +94,13 @@ class Detalles_Eventos (customtkinter.CTkFrame) :
 
         """ """
 
-        customtkinter.CTkLabel(self.scroll, text=f"Artista: {self.evento_seleccionado.artista}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Género: {self.evento_seleccionado.genero}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Ubicación: {self.evento_seleccionado.ubicacion}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio[11:]}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin[11:]}").grid(sticky = "w")
-        customtkinter.CTkLabel(self.scroll, text=f"Descripción: {self.evento_seleccionado.descripcion}").grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Artista: {self.evento_seleccionado.artista}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Género: {self.evento_seleccionado.genero}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Ubicación: {self.evento_seleccionado.ubicacion}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Fecha: {self.evento_seleccionado.hora_inicio[:10]}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de inicio: {self.evento_seleccionado.hora_inicio[11:]}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Hora de fin: {self.evento_seleccionado.hora_fin[11:]}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
+        customtkinter.CTkLabel(self.scroll, text=f"Descripción: {self.evento_seleccionado.descripcion}", font=customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold")).grid(sticky = "w")
 
     def cargar_imagenes (self) :
 

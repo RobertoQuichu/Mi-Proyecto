@@ -3,7 +3,7 @@ from tkinter import *
 from views.detalles_eventos import Detalles_Eventos
 import customtkinter
 from models.eventos import Eventos
-from PIL import Image
+from PIL import Image, ImageTk
 
 class Indice_de_Eventos (customtkinter.CTkToplevel) :
 
@@ -55,19 +55,28 @@ class Indice_de_Eventos (customtkinter.CTkToplevel) :
         #Obtener la lista de eventos desde el controlador.
         for evento in self.eventos :
             self.lista_eventos.insert(END, evento.nombre)
+        self.lista_eventos.bind("<<ListboxSelect>>", self.mostrar_imagen)
         self.lista_eventos.bind("<Double-Button-1>", self.mostrar_detalles_evento)
-    
-    def mostrar_detalles_evento(self, event) :
 
-        # Obtener el índice del evento seleccionado en el ListBox
+    def mostrar_imagen(self, event) :
+
         index = self.lista_eventos.curselection()
         if index:
+            index = int(index[0])
+            evento_seleccionado = self.eventos[index]
+            imagen_evento = customtkinter.CTkImage(light_image = Image.open(f"assets/{evento_seleccionado.imagen_portada}"), size = (300, 300))
+            self.imagen_label.configure(image = imagen_evento)
+            self.imagen_label.image = imagen_evento  
 
+    def mostrar_detalles_evento(self, event) :
+        
+        index = self.lista_eventos.curselection()
+        if index:
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
             self.detallitos = Detalles_Eventos(self, evento_seleccionado, self.controlador)
             self.detallitos.grid(row=0, column=0, sticky="nsew")
-            self.detallitos.grid_columnconfigure(0, weight = 1)
-            self.detallitos.grid_rowconfigure(0, weight = 1)
+            self.detallitos.grid_columnconfigure(0, weight=1)
+            self.detallitos.grid_rowconfigure(0, weight=1)
 
     

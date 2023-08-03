@@ -40,9 +40,9 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         self.tabview.tab("Filtrado").grid_columnconfigure(0, weight=1)
 
         #Etiquetas de busqueda.
-        self.etiqueta_busqueda = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Ingrese el nombre del evento: ")
-        self.etiqueta_genero = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Escriba el genero musical: ")
-        self.etiqueta_artista = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Ingrese el nombre del artista: ")
+        self.etiqueta_busqueda = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Ingrese el nombre del evento: ", font=customtkinter.CTkFont(family = "Tahoma", size=11))
+        self.etiqueta_genero = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Escriba el genero musical: ", font=customtkinter.CTkFont(family = "Tahoma", size=11))
+        self.etiqueta_artista = customtkinter.CTkLabel(self.tabview.tab("Busqueda"), text = "Ingrese el nombre del artista: ",font=customtkinter.CTkFont(family = "Tahoma", size=11))
         self.etiqueta_busqueda.grid(row=0, column = 0, pady = 7)
         self.etiqueta_genero.grid(row=1, column = 0, pady = 7)
         self.etiqueta_artista.grid(row=2, column = 0, pady = 7)
@@ -81,9 +81,10 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         self.frame2.grid(row = 0, column = 2, padx = 10, pady = 10)
 
         #Creacion de una Listbox para mostrar los eventos encontrados.
-        self.listbox = Listbox(self.frame2, height=15, width = 30)
+        self.listbox = Listbox(self.frame2, height=15, width = 30, fg = "#2F242C", font = customtkinter.CTkFont(family="Arial", weight="bold"))
         self.listbox.grid(row = 0, column = 0, padx = 10, pady = 10)
         self.listbox.bind("<Double-Button-1>", self.seleccionar_evento)
+        self.listbox.config(bg = "#E5E5E5", borderwidth = 5)
 
     def seleccionar_evento (self, event) :
 
@@ -92,7 +93,7 @@ class Busqueda_Filtraciones(customtkinter.CTkToplevel):
         if index:
             index = int(index[0])
             evento_seleccionado = self.eventos[index]
-            self.detalles = Detalles_Eventos(self, evento_seleccionado)
+            self.detalles = Detalles_Eventos(self, evento_seleccionado, self.controler)
             self.detalles.grid(row=0, column=0, sticky="nsew")
 
 

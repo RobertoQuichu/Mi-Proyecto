@@ -9,6 +9,7 @@
      "hora_inicio" : "2010-05-15T21:00",
      "hora_fin" : "2010-05-15T23:00",
      "descripcion" : "Ultimo concierto de Gustavo Cerati promocionando su album 'Fueza Natural.'",
+     "imagen_portada" : "gustavo_cerati.jpg",
      "imagen" : "imagen1.jpg"
     },
     {
@@ -21,6 +22,7 @@
      "hora_inicio" : "2023-11-18T21:00",
      "hora_fin" : "2023-11-18T23:00",
      "descripcion" : "Proximo concierto de Abel Pintos.",
+     "imagen_portada" : "abel_pintos.png",
      "imagen" : "imagen2.jpg"
     }
 ]

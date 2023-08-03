@@ -7,7 +7,7 @@ class Eventos :
     """ Esta clase carga los datos almacenados en los archivos json."""
 
     #Declaracion de metodos.
-    def __init__ (self, id, nombre, artista, genero, ubicacion ,id_ubicacion, hora_inicio, hora_fin, descripcion, imagen) :
+    def __init__ (self, id, nombre, artista, genero, ubicacion ,id_ubicacion, hora_inicio, hora_fin, descripcion, imagen_portada, imagen) :
 
         """ Metodo constructor de la clase Eventos."""
 
@@ -22,6 +22,7 @@ class Eventos :
         self.hora_fin = hora_fin
         self.descripcion = descripcion
         self.imagen = imagen
+        self.imagen_portada = imagen_portada
 
     def a_json(self):
         return json.dumps(self.__dict__)

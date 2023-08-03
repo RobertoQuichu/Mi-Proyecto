@@ -88,6 +88,8 @@ class Aplicacion (customtkinter.CTkFrame) :
 
         #Procesamiento de datos.
         busqueda_filtracio = Busqueda_Filtraciones(self, self.controller)
+        id_usuario_actual = self.controller.get_usuario_actual().id
+        print( id_usuario_actual)
 
     def eventos_asistidos (self) :
 
@@ -101,15 +103,15 @@ class Aplicacion (customtkinter.CTkFrame) :
         self.frame_historial = customtkinter.CTkScrollableFrame(self.framepri, orientation = "horizontal", width = 320)
         self.frame_historial.grid(row=0, column=2, sticky="ns", pady = 5, padx = (10, 20))
         
-        asistencia_indi = customtkinter.CTkLabel(self.frame_historial, text = "Eventos asistidos:")
+        asistencia_indi = customtkinter.CTkLabel(self.frame_historial, text = "Eventos asistidos:", font = customtkinter.CTkFont(family = "Times New Roman", size=12, weight="bold"))
         asistencia_indi.grid(sticky = "w", padx = 10, pady = 10) 
 
         for usuario in usuarios :
             if self.usuario_actual.id == usuario.id :
                 for evento in eventos :
                     if evento.id in usuario.asistencias :
-                        customtkinter.CTkLabel(self.frame_historial, text=f"Nombre: {evento.nombre}").grid(sticky="w")
-                        customtkinter.CTkLabel(self.frame_historial, text=f"Ubicación: {evento.ubicacion}").grid(sticky="w")
+                        customtkinter.CTkLabel(self.frame_historial, text=f"Nombre: {evento.nombre}", font = customtkinter.CTkFont(family = "Times New Roman", size = 12, weight = "bold")).grid(sticky="w")
+                        customtkinter.CTkLabel(self.frame_historial, text=f"Ubicación: {evento.ubicacion}", font = customtkinter.CTkFont(family = "Times New Roman", size = 12, weight = "bold")).grid(sticky="w")
                         customtkinter.CTkLabel(self.frame_historial, text="").grid()  
     
     def new_sesion (self) :

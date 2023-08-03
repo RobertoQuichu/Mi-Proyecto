@@ -16,12 +16,12 @@ class Ventana_Si_No(customtkinter.CTkToplevel) :
         self.label.grid(padx = 10, pady = 20, row = 0, column = 0, columnspan = 2)
 
         #Declaracion de botones
-        self.frame = customtkinter.CTkFrame(self)
-        self.frame.grid(row = 1, column = 0, padx = 10, pady = 30)
+        self.frame = customtkinter.CTkFrame(self, fg_color = "transparent")
+        self.frame.grid(row = 1, column = 0, padx = (23,10), pady = 30)
         self.boton = customtkinter.CTkButton(self.frame, text = "Si", command = self.afirmacion)
         self.boton.grid(row = 0, column = 0)
         self.boton_no = customtkinter.CTkButton(self.frame, text = "No", command = self.negacion)
-        self.boton_no.grid(row = 0, column = 1, padx = 10, pady = 30)
+        self.boton_no.grid(row = 0, column = 1, padx = (20, 30), pady = 30)
 
     def afirmacion (self) :
         self.destroy()

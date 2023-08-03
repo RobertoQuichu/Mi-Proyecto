@@ -3,7 +3,7 @@ import json
 import uuid
 
 #Declaracion de clases.
-class Reacciones:
+class Reacciones :
 
     def __init__(self, id, id_evento, id_usuario, calificacion, comentario, animo):
 
